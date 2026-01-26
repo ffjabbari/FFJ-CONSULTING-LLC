@@ -1,0 +1,94 @@
+{
+  "technologies": [
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "products": ["Groq", "CUDA", "TensorRT", "Jetson"],
+      "description": "Leading GPU technology and AI acceleration platforms",
+      "color": "#76B900",
+      "logo": "nvidia",
+      "sections": [
+        {
+          "title": "Overview",
+          "content": "NVIDIA is at the forefront of AI hardware and software, providing powerful GPUs and development platforms."
+        },
+        {
+          "title": "Key Products",
+          "content": "Groq, CUDA, TensorRT, and Jetson platforms enable high-performance AI computing."
+        },
+        {
+          "title": "Use Cases",
+          "content": "Content coming soon..."
+        },
+        {
+          "title": "Getting Started",
+          "content": "Content coming soon..."
+        }
+      ],
+      "links": {
+        "website": "https://www.nvidia.com",
+        "docs": "https://docs.nvidia.com"
+      }
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "products": ["Claude", "Constitutional AI", "Claude API"],
+      "description": "Advanced AI safety and large language models",
+      "color": "#D97757",
+      "logo": "anthropic",
+      "sections": [
+        {
+          "title": "Overview",
+          "content": "Anthropic focuses on building safe, helpful, and honest AI systems through Constitutional AI."
+        },
+        {
+          "title": "Key Products",
+          "content": "Claude is a next-generation AI assistant designed to be helpful, harmless, and honest."
+        },
+        {
+          "title": "Use Cases",
+          "content": "Content coming soon..."
+        },
+        {
+          "title": "Getting Started",
+          "content": "Content coming soon..."
+        }
+      ],
+      "links": {
+        "website": "https://www.anthropic.com",
+        "docs": "https://docs.anthropic.com"
+      }
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "products": ["GPT-4", "DALL-E", "ChatGPT", "Whisper", "Codex"],
+      "description": "Pioneering generative AI and language models",
+      "color": "#10A37F",
+      "logo": "openai",
+      "sections": [
+        {
+          "title": "Overview",
+          "content": "OpenAI develops cutting-edge AI models that power a wide range of applications."
+        },
+        {
+          "title": "Key Products",
+          "content": "GPT-4, DALL-E, ChatGPT, and other models enable text generation, image creation, and more."
+        },
+        {
+          "title": "Use Cases",
+          "content": "Content coming soon..."
+        },
+        {
+          "title": "Getting Started",
+          "content": "Content coming soon..."
+        }
+      ],
+      "links": {
+        "website": "https://www.openai.com",
+        "docs": "https://platform.openai.com/docs"
+      }
+    }
+  ]
+}

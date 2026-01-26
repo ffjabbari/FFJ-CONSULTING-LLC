@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .architecture-content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .architecture-content h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .architecture-content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .architecture-content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .architecture-content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .architecture-content ul, .architecture-content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .architecture-content li {
+            margin-bottom: 10px;
+        }
+        
+        .architecture-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .architecture-content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .architecture-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .diagram-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+        
+        <div class="architecture-content">
+            <h1>System Architecture</h1>
+            
+            <h2>Overview</h2>
+            <p>The FFJ Consulting LLC website is a modern, full-stack web application built with React frontend and C# ASP.NET Core backend, designed to be easily extensible with multiple backend options (C#, Java, Python).</p>
+            
+            <div class="diagram-box">
+                <h3>Design Philosophy</h3>
+                <p>This website was designed with the following principles:</p>
+                <ul>
+                    <li><strong>Content-First Approach:</strong> File-based CMS using JSON and Markdown for easy updates via Cursor</li>
+                    <li><strong>Multi-Backend Support:</strong> Architecture allows switching between C#, Java, and Python backends</li>
+                    <li><strong>Professional Design:</strong> Inspired by Clear Digital's AI Enablement page with modern gradients and card-based layouts</li>
+                    <li><strong>Educational Focus:</strong> Comprehensive AI education content covering Agentic AI, Generative AI, and development tools</li>
+                    <li><strong>Easy Deployment:</strong> Automated scripts for AWS S3 deployment with minimal configuration</li>
+                </ul>
+            </div>
+            
+            <h2>Technology Stack</h2>
+            <h3>Frontend</h3>
+            <ul>
+                <li><strong>React 18</strong> - Modern UI library</li>
+                <li><strong>Vite</strong> - Fast build tool and dev server</li>
+                <li><strong>React Router</strong> - Client-side routing</li>
+                <li><strong>React Markdown</strong> - Markdown rendering for articles</li>
+                <li><strong>Axios</strong> - HTTP client for API calls</li>
+            </ul>
+            
+            <h3>Backend</h3>
+            <ul>
+                <li><strong>ASP.NET Core 8.0</strong> - Web API framework (Default)</li>
+                <li><strong>Entity Framework Core</strong> - ORM for database access</li>
+                <li><strong>SQLite3</strong> - Lightweight database</li>
+                <li><strong>Swagger/OpenAPI</strong> - API documentation</li>
+            </ul>
+            
+            <h3>Deployment</h3>
+            <ul>
+                <li><strong>AWS S3</strong> - Static website hosting for frontend</li>
+                <li><strong>AWS CloudFront</strong> - CDN and HTTPS (optional)</li>
+                <li><strong>AWS Elastic Beanstalk/EC2</strong> - Backend hosting</li>
+            </ul>
+            
+            <h2>System Architecture Diagram</h2>
+            <div class="diagram-box">
+                <pre>
+┌─────────────────────────────────────────────────────────┐
+│                    User Browser                          │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│              AWS CloudFront (CDN)                        │
+│              (Optional - for HTTPS)                     │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│              AWS S3 Bucket                              │
+│              React Static Files                         │
+│              - index.html                               │
+│              - JavaScript bundles                       │
+│              - CSS files                                │
+│              - Images & Content                         │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     │ API Calls (/api/*)
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│         C# ASP.NET Core Web API                         │
+│         (AWS Elastic Beanstalk/EC2)                     │
+│                                                          │
+│         Controllers:                                    │
+│         - BackendInfoController                         │
+│         - (Future: Articles, etc.)                      │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│              SQLite Database                            │
+│              (ffjconsulting.db)                         │
+└─────────────────────────────────────────────────────────┘
+                </pre>
+            </div>
+            
+            <h2>Project Structure</h2>
+            <pre><code>FFJ-CONSULTING-LLC/
+├── frontend/
+│   ├── src/
+│   │   ├── components/          # React components
+│   │   │   ├── LandingPage.jsx  # GPU/TPU animation landing
+│   │   │   ├── Navigation.jsx   # Top navigation
+│   │   │   ├── Hero.jsx         # Hero section
+│   │   │   ├── AITechnologies.jsx
+│   │   │   ├── Articles.jsx
+│   │   │   ├── Tools.jsx
+│   │   │   ├── Resume.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── data/                # JSON data files
+│   │   │   ├── articles.json
+│   │   │   ├── technologies.json
+│   │   │   └── tools.json
+│   │   ├── content/             # Markdown content
+│   │   │   ├── resume.md
+│   │   │   └── *.md (articles)
+│   │   ├── config.js            # Site configuration
+│   │   └── App.jsx              # Main app component
+│   ├── public/
+│   │   ├── images/              # Static images
+│   │   └── content/              # Public content files
+│   └── dist/                     # Build output
+│
+├── backend/
+│   └── FFJConsulting.API/
+│       ├── Controllers/          # API controllers
+│       ├── Data/                 # Database context
+│       ├── Program.cs            # Entry point
+│       └── appsettings.json      # Configuration
+│
+└── Docs/                         # Documentation
+    ├── index.html
+    ├── architecture.html
+    └── styles.css</code></pre>
+            
+            <h2>Key Features</h2>
+            
+            <h3>1. Content Management System</h3>
+            <p>The website uses a file-based content management system:</p>
+            <ul>
+                <li><strong>JSON Data Files</strong> - Metadata for articles, technologies, and tools stored in <code>src/data/</code></li>
+                <li><strong>Markdown Content</strong> - Article and resume content stored as markdown files in <code>src/content/</code></li>
+                <li><strong>Easy Updates</strong> - Update content by editing JSON and markdown files, no database required</li>
+            </ul>
+            
+            <h3>2. Multi-Backend Support</h3>
+            <p>The system is designed to support multiple backend technologies:</p>
+            <ul>
+                <li><strong>Default: C#</strong> - Currently implemented with ASP.NET Core</li>
+                <li><strong>Future: Java</strong> - Can be added as separate backend service</li>
+                <li><strong>Future: Python</strong> - Can be added as separate backend service</li>
+            </ul>
+            <p>The frontend displays "Powered by [Backend Name]" based on backend configuration.</p>
+            
+            <h3>3. Routing</h3>
+            <ul>
+                <li><strong>Landing Page</strong> - GPU/TPU animation at root (/)</li>
+                <li><strong>Home Page</strong> - Main site with all sections</li>
+                <li><strong>Article Pages</strong> - Dynamic routes: /article/:articleId</li>
+                <li><strong>Resume Page</strong> - Static route: /resume</li>
+            </ul>
+            
+            <h2>How to Use This System</h2>
+            
+            <h3>Adding New Articles</h3>
+            <ol>
+                <li>Create a markdown file in <code>frontend/src/content/</code></li>
+                <li>Add article metadata to <code>frontend/src/data/articles.json</code></li>
+                <li>Reference the markdown file in the <code>contentFile</code> field</li>
+                <li>Rebuild: <code>npm run build</code></li>
+            </ol>
+            
+            <h3>Updating Content via Cursor</h3>
+            <p>You can update content by telling Cursor:</p>
+            <ul>
+                <li>"Add a new article to [category] with content from [file/URL]"</li>
+                <li>"Update the [technology/tool] section with [information]"</li>
+                <li>"Extract content from [.docx file] and create an article"</li>
+            </ul>
+            
+            <h3>Deploying to AWS</h3>
+            <p><strong>Current Production URL:</strong> <a href="http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com" target="_blank">http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com</a></p>
+            
+            <h4>Step-by-Step AWS Deployment Process</h4>
+            <ol>
+                <li><strong>Build Frontend:</strong>
+                    <pre><code>cd frontend
+npm run build</code></pre>
+                    This creates the <code>dist/</code> folder with all static files.
+                </li>
+                
+                <li><strong>Create S3 Bucket (if needed):</strong>
+                    <pre><code>aws s3 mb s3://ffj-consulting-website --region us-east-1 --profile my-sso</code></pre>
+                </li>
+                
+                <li><strong>Upload Files to S3:</strong>
+                    <pre><code>aws s3 sync frontend/dist/ s3://ffj-consulting-website --delete --region us-east-1 --profile my-sso</code></pre>
+                    The <code>--delete</code> flag removes old files not in the new build.
+                </li>
+                
+                <li><strong>Enable Static Website Hosting:</strong>
+                    <pre><code>aws s3 website s3://ffj-consulting-website \
+    --index-document index.html \
+    --error-document index.html \
+    --profile my-sso</code></pre>
+                </li>
+                
+                <li><strong>Disable Block Public Access:</strong>
+                    <pre><code>aws s3api put-public-access-block \
+    --bucket ffj-consulting-website \
+    --public-access-block-configuration \
+    "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false" \
+    --region us-east-1 \
+    --profile my-sso</code></pre>
+                </li>
+                
+                <li><strong>Set Bucket Policy for Public Access:</strong>
+                    <pre><code>aws s3api put-bucket-policy \
+    --bucket ffj-consulting-website \
+    --policy '{
+      "Version": "2012-10-17",
+      "Statement": [{
+        "Sid": "PublicReadGetObject",
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::ffj-consulting-website/*"
+      }]
+    }' \
+    --region us-east-1 \
+    --profile my-sso</code></pre>
+                </li>
+                
+                <li><strong>Update config.js with Production URL:</strong>
+                    <p>Edit <code>frontend/src/config.js</code> and set:</p>
+                    <pre><code>export const SITE_URL = 'http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com'</code></pre>
+                </li>
+                
+                <li><strong>Rebuild and Redeploy:</strong>
+                    <pre><code>cd frontend
+npm run build
+aws s3 sync dist/ s3://ffj-consulting-website --delete --region us-east-1 --profile my-sso</code></pre>
+                </li>
+            </ol>
+            
+            <h4>Automated Deployment Scripts</h4>
+            <p>Two deployment scripts are available:</p>
+            <ul>
+                <li><strong>deploy-aws.sh</strong> - Full deployment including bucket creation</li>
+                <li><strong>complete-aws-deployment.py</strong> - Python script to complete S3 configuration</li>
+            </ul>
+            
+            <h4>Finding Your AWS Website URL</h4>
+            <p>After deployment, your website URL follows this pattern:</p>
+            <pre><code>http://[bucket-name].s3-website-[region].amazonaws.com</code></pre>
+            <p>For this project:</p>
+            <pre><code>http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com</code></pre>
+            
+            <p>You can also find it in AWS Console:</p>
+            <ol>
+                <li>Go to S3 → Your bucket → Properties tab</li>
+                <li>Scroll to "Static website hosting"</li>
+                <li>Copy the "Bucket website endpoint" URL</li>
+            </ol>
+            
+            <h3>Switching Backends</h3>
+            <p>To switch between backends:</p>
+            <ol>
+                <li>Update <code>backend/FFJConsulting.API/appsettings.json</code></li>
+                <li>Change <code>"Backend:Name"</code> to "Java", "Python", or "C#"</li>
+                <li>Restart the backend service</li>
+                <li>The frontend will automatically display the new backend name</li>
+            </ol>
+            
+            <h2>Configuration</h2>
+            
+            <h3>Frontend Configuration</h3>
+            <p>Edit <code>frontend/src/config.js</code> to set:</p>
+            <ul>
+                <li><code>SITE_URL</code> - Your production website URL</li>
+                <li><code>GITHUB_REPO</code> - GitHub repository URL</li>
+            </ul>
+            
+            <h3>Backend Configuration</h3>
+            <p>Edit <code>backend/FFJConsulting.API/appsettings.json</code> to configure:</p>
+            <ul>
+                <li>Database connection string</li>
+                <li>Backend name and version</li>
+                <li>CORS origins</li>
+            </ul>
+            
+            <h2>Links and Resources</h2>
+            <ul>
+                <li><strong>Website:</strong> <a href="http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com" target="_blank">http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/fjabbari/FFJ-CONSULTING-LLC" target="_blank">https://github.com/fjabbari/FFJ-CONSULTING-LLC</a></li>
+                <li><strong>Resume:</strong> <a href="http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/resume" target="_blank">http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/resume</a></li>
+                <li><strong>AI Article:</strong> <a href="http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/article/ai-revolution-demo" target="_blank">http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/article/ai-revolution-demo</a></li>
+            </ul>
+            
+            <h2>Development Workflow</h2>
+            <ol>
+                <li><strong>Local Development:</strong> Run <code>python3 start.py</code> to start both frontend and backend</li>
+                <li><strong>Content Updates:</strong> Edit JSON/markdown files, changes appear on refresh</li>
+                <li><strong>Testing:</strong> Test locally at http://localhost:3000</li>
+                <li><strong>Build:</strong> Run <code>npm run build</code> in frontend directory</li>
+                <li><strong>Deploy:</strong> Upload <code>dist/</code> folder to S3</li>
+            </ol>
+            
+            <h2>How This System Was Built</h2>
+            
+            <h3>Design Process</h3>
+            <ol>
+                <li><strong>Landing Page:</strong> Created animated GPU/TPU visualization to demonstrate AI hardware</li>
+                <li><strong>Main Site:</strong> Designed with Clear Digital inspiration - professional, modern, card-based layout</li>
+                <li><strong>Content Structure:</strong> Implemented file-based CMS for easy content management</li>
+                <li><strong>Navigation:</strong> Smooth scrolling and React Router for seamless user experience</li>
+                <li><strong>Responsive Design:</strong> Mobile-friendly with breakpoints for all screen sizes</li>
+            </ol>
+            
+            <h3>Key Features Implemented</h3>
+            <ul>
+                <li><strong>Landing Animation:</strong> GPU/TPU chip visualization with data flow animations</li>
+                <li><strong>Article System:</strong> Dynamic routing with markdown content rendering</li>
+                <li><strong>Resume Integration:</strong> Dedicated resume page with clickable resource links</li>
+                <li><strong>Multi-Backend Display:</strong> "Powered by" indicator showing current backend (C#/Java/Python)</li>
+                <li><strong>Content Management:</strong> JSON-driven content that can be updated via Cursor</li>
+                <li><strong>AWS Integration:</strong> Fully configured for S3 static hosting</li>
+            </ul>
+            
+            <h3>AWS Deployment Details</h3>
+            <p><strong>Current Configuration:</strong></p>
+            <ul>
+                <li><strong>Bucket Name:</strong> ffj-consulting-website</li>
+                <li><strong>Region:</strong> us-east-1</li>
+                <li><strong>Hosting Type:</strong> Static website hosting</li>
+                <li><strong>Access:</strong> Public read access enabled</li>
+                <li><strong>Index Document:</strong> index.html</li>
+                <li><strong>Error Document:</strong> index.html (for SPA routing)</li>
+            </ul>
+            
+            <p><strong>Deployment Commands Used:</strong></p>
+            <pre><code># Initial deployment
+aws s3 mb s3://ffj-consulting-website --region us-east-1 --profile my-sso
+aws s3 sync frontend/dist/ s3://ffj-consulting-website --delete --profile my-sso
+aws s3 website s3://ffj-consulting-website --index-document index.html --error-document index.html --profile my-sso
+
+# Configure public access
+aws s3api put-public-access-block --bucket ffj-consulting-website \
+    --public-access-block-configuration \
+    "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false" \
+    --region us-east-1 --profile my-sso
+
+# Set bucket policy
+aws s3api put-bucket-policy --bucket ffj-consulting-website \
+    --policy '{...}' --region us-east-1 --profile my-sso</code></pre>
+            
+            <h3>Finding Your AWS Website URL</h3>
+            <p>Your production website is accessible at:</p>
+            <p><strong><a href="http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com" target="_blank">http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com</a></strong></p>
+            
+            <p>To find this URL in AWS Console:</p>
+            <ol>
+                <li>Log into AWS Console</li>
+                <li>Navigate to S3 service</li>
+                <li>Click on your bucket: <code>ffj-consulting-website</code></li>
+                <li>Go to the "Properties" tab</li>
+                <li>Scroll down to "Static website hosting"</li>
+                <li>Copy the "Bucket website endpoint" URL</li>
+            </ol>
+            
+            <p>The URL format is always: <code>http://[bucket-name].s3-website-[region].amazonaws.com</code></p>
+            
+            <h2>Future Enhancements</h2>
+            <ul>
+                <li>Add Java backend implementation</li>
+                <li>Add Python backend implementation</li>
+                <li>Implement article search functionality</li>
+                <li>Add user authentication for admin features</li>
+                <li>Migrate from SQLite to PostgreSQL for production</li>
+                <li>Add CloudFront distribution for better performance</li>
+                <li>Implement CI/CD pipeline</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

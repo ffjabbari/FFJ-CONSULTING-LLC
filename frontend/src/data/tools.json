@@ -1,0 +1,76 @@
+{
+  "tools": [
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "category": "AI-Powered IDE",
+      "description": "The AI-first code editor that understands your codebase",
+      "features": [
+        "AI code completion",
+        "Chat with your codebase",
+        "Multi-file editing",
+        "Codebase understanding",
+        "Automatic refactoring",
+        "Code generation"
+      ],
+      "links": {
+        "website": "https://cursor.sh",
+        "docs": "https://cursor.sh/docs"
+      },
+      "tutorials": [
+        {
+          "title": "Getting Started with Cursor",
+          "excerpt": "Learn the basics of using Cursor for AI-assisted development",
+          "status": "coming-soon"
+        },
+        {
+          "title": "Advanced Cursor Features",
+          "excerpt": "Master advanced features like codebase chat and refactoring",
+          "status": "coming-soon"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example 1",
+          "description": "Content coming soon..."
+        }
+      ]
+    },
+    {
+      "id": "amazon-q",
+      "name": "Amazon Q",
+      "category": "AI Assistant",
+      "description": "AWS AI assistant for developers and business users",
+      "features": [
+        "Code generation",
+        "AWS service guidance",
+        "Security analysis",
+        "Documentation assistance",
+        "Infrastructure recommendations",
+        "Troubleshooting help"
+      ],
+      "links": {
+        "website": "https://aws.amazon.com/q/",
+        "docs": "https://docs.aws.amazon.com/q/"
+      },
+      "tutorials": [
+        {
+          "title": "Getting Started with Amazon Q",
+          "excerpt": "Learn how to use Amazon Q for AWS development",
+          "status": "coming-soon"
+        },
+        {
+          "title": "Amazon Q for DevOps",
+          "excerpt": "Use Amazon Q to streamline your DevOps workflows",
+          "status": "coming-soon"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Example 1",
+          "description": "Content coming soon..."
+        }
+      ]
+    }
+  ]
+}

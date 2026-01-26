@@ -1,0 +1,42 @@
+================================================================================
+LINKS TO ADD TO YOUR RESUME (.docx FILE)
+================================================================================
+
+Add this section at the end of your resume:
+
+--------------------------------------------------------------------------------
+Additional Resources
+--------------------------------------------------------------------------------
+
+FFJ Consulting Cloud and AI Hands on Architecture:
+http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com
+
+AI History, Past and Present:
+http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/article/ai-revolution-demo
+
+GitHub Source Code:
+https://github.com/fjabbari/FFJ-CONSULTING-LLC
+
+================================================================================
+HOW TO ADD THESE TO YOUR RESUME:
+================================================================================
+
+Option 1: Manual in Microsoft Word
+1. Open your resume: /Users/fjabbari/@@@PUBLIC/@@@RESUME_2026/Fred_Jabbari_Resume_Optimized_2026_with_Bedrock_BDAGood001.docx
+2. Go to the end of the document
+3. Add a new section titled "Additional Resources"
+4. Copy and paste the three links above
+5. Make the URLs clickable hyperlinks:
+   - Select each URL
+   - Right-click → Hyperlink
+   - Paste the URL in the Address field
+   - Click OK
+6. Save the document
+
+Option 2: Tell Cursor to do it
+Say: "Add these links to the end of my resume .docx file:
+- FFJ Consulting Cloud and AI Hands on Architecture: [URL]
+- AI History, Past and Present: [URL]  
+- GitHub Source Code: [URL]"
+
+================================================================================

@@ -1,0 +1,125 @@
+{
+  "categories": [
+    {
+      "id": "agentic-ai",
+      "title": "Agentic AI",
+      "description": "Learn how autonomous AI agents work and how to build them",
+      "articles": [
+        {
+          "id": "introduction-to-agentic-ai",
+          "title": "Introduction to Agentic AI",
+          "excerpt": "Discover what agentic AI is and how it differs from traditional AI systems.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["agentic-ai", "basics", "introduction"],
+          "contentFile": "introduction-to-agentic-ai.md"
+        },
+        {
+          "id": "building-your-first-ai-agent",
+          "title": "Building Your First AI Agent",
+          "excerpt": "Step-by-step guide to creating your first autonomous AI agent.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["agentic-ai", "tutorial", "hands-on"],
+          "contentFile": "building-your-first-ai-agent.md"
+        },
+        {
+          "id": "agent-architecture-patterns",
+          "title": "Agent Architecture Patterns",
+          "excerpt": "Common patterns and best practices for designing AI agent systems.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["agentic-ai", "architecture", "patterns"],
+          "contentFile": "agent-architecture-patterns.md"
+        }
+      ]
+    },
+    {
+      "id": "generative-ai",
+      "title": "Generative AI",
+      "description": "Master generative AI technologies and applications",
+      "articles": [
+        {
+          "id": "understanding-large-language-models",
+          "title": "Understanding Large Language Models",
+          "excerpt": "Deep dive into how LLMs work and their capabilities.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["generative-ai", "llm", "basics"],
+          "contentFile": "understanding-large-language-models.md"
+        },
+        {
+          "id": "prompt-engineering-best-practices",
+          "title": "Prompt Engineering Best Practices",
+          "excerpt": "Learn how to craft effective prompts for better AI responses.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["generative-ai", "prompting", "best-practices"],
+          "contentFile": "prompt-engineering-best-practices.md"
+        },
+        {
+          "id": "fine-tuning-models",
+          "title": "Fine-tuning Models for Your Use Case",
+          "excerpt": "Guide to customizing AI models for specific applications.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["generative-ai", "fine-tuning", "customization"],
+          "contentFile": "fine-tuning-models.md"
+        }
+      ]
+    },
+    {
+      "id": "ai-tools",
+      "title": "AI Tools & Platforms",
+      "description": "Practical guides for using AI development tools",
+      "articles": [
+        {
+          "id": "ai-revolution-demo",
+          "title": "AI Revolution Demo",
+          "excerpt": "Exploring the AI revolution and its impact on technology and business.",
+          "status": "published",
+          "author": "Fred Jabbari",
+          "date": "2025-01-25",
+          "tags": ["ai", "revolution", "technology", "business"],
+          "contentFile": "ai-revolution-demo.md"
+        },
+        {
+          "id": "getting-started-with-cursor-ide",
+          "title": "Getting Started with Cursor IDE",
+          "excerpt": "Complete guide to using Cursor for AI-assisted development.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["tools", "cursor", "ide", "tutorial"],
+          "contentFile": "getting-started-with-cursor-ide.md"
+        },
+        {
+          "id": "amazon-q-developer-guide",
+          "title": "Amazon Q Developer Guide",
+          "excerpt": "How to leverage Amazon Q for AWS development and operations.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["tools", "amazon-q", "aws", "tutorial"],
+          "contentFile": "amazon-q-developer-guide.md"
+        },
+        {
+          "id": "ai-assisted-development-workflows",
+          "title": "AI-Assisted Development Workflows",
+          "excerpt": "Optimize your development process with AI tools.",
+          "status": "draft",
+          "author": "FFJ Consulting",
+          "date": "2025-01-25",
+          "tags": ["tools", "workflow", "productivity"],
+          "contentFile": "ai-assisted-development-workflows.md"
+        }
+      ]
+    }
+  ]
+}
