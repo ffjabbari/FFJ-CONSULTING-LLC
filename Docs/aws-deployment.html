@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Deployment - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .content h1 {
+            color: #fa709a;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+        }
+        
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .diagram-box {
+            background: #f8f9fa;
+            border-left: 4px solid #fa709a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+        
+        <div class="content">
+            <h1>AWS Deployment</h1>
+            
+            <h2>Overview</h2>
+            <p>The FFJ Consulting LLC website is deployed on AWS using S3 for static hosting, CloudFront for CDN and HTTPS, and Route 53 for DNS management.</p>
+            
+            <div class="diagram-box">
+                <h3>Current Production Setup</h3>
+                <ul>
+                    <li><strong>Domain:</strong> ffjconsultingllc.com</li>
+                    <li><strong>S3 Bucket:</strong> ffj-consulting-website</li>
+                    <li><strong>CloudFront Distribution:</strong> E3545N3N8YO2FZ</li>
+                    <li><strong>Region:</strong> us-east-1</li>
+                    <li><strong>SSL Certificate:</strong> AWS Certificate Manager (ACM)</li>
+                </ul>
+            </div>
+            
+            <h2>AWS Architecture</h2>
+            
+            <h3>Components</h3>
+            <ul>
+                <li><strong>Amazon S3:</strong> Static website hosting</li>
+                <li><strong>Amazon CloudFront:</strong> CDN and HTTPS termination</li>
+                <li><strong>Route 53:</strong> DNS management</li>
+                <li><strong>ACM:</strong> SSL/TLS certificates</li>
+            </ul>
+            
+            <h3>Data Flow</h3>
+            <pre><code>User Request
+    ↓
+Route 53 (DNS)
+    ↓
+CloudFront (CDN + HTTPS)
+    ↓
+S3 Bucket (Static Files)
+    ↓
+User Response</code></pre>
+            
+            <h2>Initial Setup</h2>
+            
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>AWS Account with appropriate permissions</li>
+                <li>AWS CLI installed and configured</li>
+                <li>Domain registered (or use Route 53)</li>
+                <li>AWS profile configured (e.g., my-sso)</li>
+            </ul>
+            
+            <h3>S3 Bucket Setup</h3>
+            <ol>
+                <li><strong>Create Bucket:</strong>
+                    <pre><code>aws s3 mb s3://ffj-consulting-website --region us-east-1 --profile my-sso</code></pre>
+                </li>
+                <li><strong>Enable Static Website Hosting:</strong>
+                    <pre><code>aws s3 website s3://ffj-consulting-website \
+    --index-document index.html \
+    --error-document index.html \
+    --profile my-sso</code></pre>
+                </li>
+                <li><strong>Configure Public Access:</strong>
+                    <pre><code>aws s3api put-public-access-block \
+    --bucket ffj-consulting-website \
+    --public-access-block-configuration \
+    "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false" \
+    --region us-east-1 \
+    --profile my-sso</code></pre>
+                </li>
+                <li><strong>Set Bucket Policy:</strong>
+                    <pre><code>aws s3api put-bucket-policy \
+    --bucket ffj-consulting-website \
+    --policy file://bucket-policy.json \
+    --profile my-sso</code></pre>
+                </li>
+            </ol>
+            
+            <h2>CloudFront Setup</h2>
+            
+            <h3>Create Distribution</h3>
+            <p>CloudFront provides CDN and HTTPS capabilities:</p>
+            <ul>
+                <li><strong>Origin:</strong> S3 website endpoint</li>
+                <li><strong>SSL Certificate:</strong> From ACM</li>
+                <li><strong>Custom Domain:</strong> ffjconsultingllc.com</li>
+                <li><strong>Error Pages:</strong> Redirect 404 to index.html (for SPA routing)</li>
+            </ul>
+            
+            <h3>CloudFront Configuration</h3>
+            <ul>
+                <li><strong>Distribution ID:</strong> E3545N3N8YO2FZ</li>
+                <li><strong>Domain:</strong> d1129gv8vb7t5w.cloudfront.net</li>
+                <li><strong>Price Class:</strong> North America and Europe</li>
+                <li><strong>Default Root Object:</strong> index.html</li>
+            </ul>
+            
+            <h2>Domain & SSL Setup</h2>
+            
+            <h3>Route 53 Configuration</h3>
+            <ol>
+                <li><strong>Register Domain:</strong> Via Route 53 or external registrar</li>
+                <li><strong>Create Hosted Zone:</strong> For DNS management</li>
+                <li><strong>Update Nameservers:</strong> Point domain to Route 53 nameservers</li>
+            </ol>
+            
+            <h3>SSL Certificate</h3>
+            <ol>
+                <li><strong>Request Certificate:</strong> In ACM (us-east-1 region)</li>
+                <li><strong>Domain Validation:</strong> Add DNS validation records</li>
+                <li><strong>Wait for Validation:</strong> Usually 5-30 minutes</li>
+                <li><strong>Attach to CloudFront:</strong> Use certificate ARN in distribution</li>
+            </ol>
+            
+            <h3>DNS Records</h3>
+            <p>Create A record (alias) pointing to CloudFront:</p>
+            <ul>
+                <li><strong>Type:</strong> A (Alias)</li>
+                <li><strong>Name:</strong> ffjconsultingllc.com</li>
+                <li><strong>Alias Target:</strong> CloudFront distribution</li>
+                <li><strong>Also create:</strong> www.ffjconsultingllc.com (CNAME or A record)</li>
+            </ul>
+            
+            <h2>Deployment Process</h2>
+            
+            <h3>Automated Deployment</h3>
+            <p>Use the deployment script:</p>
+            <pre><code>python3 deploy.py</code></pre>
+            <p>Or:</p>
+            <pre><code>./deploy-with-new-domain.sh</code></pre>
+            
+            <h3>Manual Deployment Steps</h3>
+            <ol>
+                <li><strong>Build Frontend:</strong>
+                    <pre><code>cd frontend
+npm run build</code></pre>
+                </li>
+                <li><strong>Upload to S3:</strong>
+                    <pre><code>aws s3 sync frontend/dist/ s3://ffj-consulting-website \
+    --delete \
+    --profile my-sso \
+    --region us-east-1</code></pre>
+                </li>
+                <li><strong>Fix Content-Types:</strong>
+                    <pre><code># JavaScript files need application/javascript
+aws s3api copy-object \
+    --bucket ffj-consulting-website \
+    --copy-source ffj-consulting-website/assets/index-*.js \
+    --key assets/index-*.js \
+    --content-type application/javascript \
+    --metadata-directive REPLACE \
+    --profile my-sso</code></pre>
+                </li>
+                <li><strong>Invalidate CloudFront Cache:</strong>
+                    <pre><code>aws cloudfront create-invalidation \
+    --distribution-id E3545N3N8YO2FZ \
+    --paths "/*" \
+    --profile my-sso</code></pre>
+                </li>
+            </ol>
+            
+            <h2>Content-Type Configuration</h2>
+            <p>Important: JavaScript files must have <code>application/javascript</code> content-type for ES modules:</p>
+            <ul>
+                <li>HTML: <code>text/html</code></li>
+                <li>JavaScript: <code>application/javascript</code></li>
+                <li>CSS: <code>text/css</code></li>
+                <li>Images: Auto-detected (image/png, image/jpeg, etc.)</li>
+            </ul>
+            
+            <h2>Cache Management</h2>
+            
+            <h3>CloudFront Cache Invalidation</h3>
+            <p>After deploying updates, invalidate the cache:</p>
+            <pre><code>aws cloudfront create-invalidation \
+    --distribution-id E3545N3N8YO2FZ \
+    --paths "/*" \
+    --profile my-sso</code></pre>
+            
+            <h3>Cache Headers</h3>
+            <ul>
+                <li><strong>HTML:</strong> <code>Cache-Control: no-cache</code></li>
+                <li><strong>JS/CSS:</strong> <code>Cache-Control: public, max-age=31536000, immutable</code></li>
+                <li><strong>Images:</strong> <code>Cache-Control: public, max-age=31536000</code></li>
+            </ul>
+            
+            <h2>Monitoring & Maintenance</h2>
+            
+            <h3>CloudWatch Metrics</h3>
+            <ul>
+                <li>Monitor CloudFront requests</li>
+                <li>Track error rates</li>
+                <li>Monitor bandwidth usage</li>
+                <li>Set up alarms for issues</li>
+            </ul>
+            
+            <h3>Cost Optimization</h3>
+            <ul>
+                <li>Use CloudFront caching to reduce S3 requests</li>
+                <li>Enable compression in CloudFront</li>
+                <li>Use appropriate price class</li>
+                <li>Monitor and optimize cache hit ratio</li>
+            </ul>
+            
+            <h2>Troubleshooting</h2>
+            
+            <h3>Common Issues</h3>
+            <ul>
+                <li><strong>MIME Type Errors:</strong> Fix JavaScript content-type to application/javascript</li>
+                <li><strong>404 Errors:</strong> Configure CloudFront error pages for SPA routing</li>
+                <li><strong>Cache Issues:</strong> Invalidate CloudFront cache after updates</li>
+                <li><strong>SSL Errors:</strong> Verify certificate is validated and attached</li>
+                <li><strong>DNS Issues:</strong> Check Route 53 records and propagation</li>
+            </ul>
+            
+            <h2>Production URLs</h2>
+            <ul>
+                <li><strong>Main Site:</strong> <a href="https://ffjconsultingllc.com" target="_blank">https://ffjconsultingllc.com</a></li>
+                <li><strong>WWW:</strong> <a href="https://www.ffjconsultingllc.com" target="_blank">https://www.ffjconsultingllc.com</a></li>
+                <li><strong>CloudFront:</strong> https://d1129gv8vb7t5w.cloudfront.net</li>
+                <li><strong>Legacy S3:</strong> http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com</li>
+            </ul>
+            
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Always use HTTPS (CloudFront with SSL)</li>
+                <li>Set correct content-types for all files</li>
+                <li>Invalidate cache after deployments</li>
+                <li>Monitor costs and usage</li>
+                <li>Keep deployment scripts updated</li>
+                <li>Document all configuration changes</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

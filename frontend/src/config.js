@@ -1,8 +1,8 @@
 // Configuration for the website
-// Production URL: http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com
+// Production URL: https://ffjconsultingllc.com
 
-export const SITE_URL = process.env.VITE_SITE_URL || 'http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com'
-export const GITHUB_REPO = 'https://github.com/fjabbari/FFJ-CONSULTING-LLC'
+export const SITE_URL = process.env.VITE_SITE_URL || 'https://ffjconsultingllc.com'
+export const GITHUB_REPO = 'https://github.com/ffjabbari/FFJ-CONSULTING-LLC'
 
 // Helper function to get full URL
 export const getFullUrl = (path) => {

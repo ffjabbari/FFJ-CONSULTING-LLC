@@ -78,6 +78,7 @@ function Navigation() {
           <li><a href="/#articles" onClick={(e) => { e.preventDefault(); scrollToSection('articles') }}>Articles</a></li>
           <li><a href="/#tools" onClick={(e) => { e.preventDefault(); scrollToSection('tools') }}>Tools</a></li>
           <li><a href="/resume" onClick={handleResumeClick}>Resume</a></li>
+          <li><a href="/docs" target="_blank" rel="noopener noreferrer">Documentation</a></li>
           <li><a href="/#about" onClick={(e) => { e.preventDefault(); scrollToSection('about') }}>About</a></li>
         </ul>
       </div>

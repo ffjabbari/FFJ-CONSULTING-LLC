@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .content h1 {
+            color: #fee140;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+        }
+        
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .diagram-box {
+            background: #f8f9fa;
+            border-left: 4px solid #fee140;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+        
+        <div class="content">
+            <h1>Maintenance</h1>
+            
+            <h2>Overview</h2>
+            <p>This guide covers ongoing maintenance tasks, updates, troubleshooting, and best practices for keeping the FFJ Consulting LLC website running smoothly.</p>
+            
+            <div class="diagram-box">
+                <h3>Regular Maintenance Tasks</h3>
+                <ul>
+                    <li>Update dependencies (monthly)</li>
+                    <li>Review and update content (as needed)</li>
+                    <li>Monitor performance and errors</li>
+                    <li>Backup important data</li>
+                    <li>Security updates</li>
+                </ul>
+            </div>
+            
+            <h2>Content Updates</h2>
+            
+            <h3>Adding New Articles</h3>
+            <ol>
+                <li>Create markdown file in <code>frontend/src/content/</code></li>
+                <li>Add entry to <code>frontend/src/data/articles.json</code></li>
+                <li>Reference the markdown file in the <code>contentFile</code> field</li>
+                <li>Rebuild and deploy:
+                    <pre><code>cd frontend
+npm run build
+python3 deploy.py</code></pre>
+                </li>
+            </ol>
+            
+            <h3>Updating Existing Content</h3>
+            <ul>
+                <li>Edit markdown files directly in <code>src/content/</code></li>
+                <li>Update JSON metadata in <code>src/data/</code></li>
+                <li>Rebuild and redeploy</li>
+            </ul>
+            
+            <h3>Updating Resume</h3>
+            <ol>
+                <li>Edit <code>frontend/src/content/resume.md</code></li>
+                <li>Or use the update script: <code>python3 update-resume-docx.py</code></li>
+                <li>Rebuild and deploy</li>
+            </ol>
+            
+            <h2>Dependency Updates</h2>
+            
+            <h3>Frontend Dependencies</h3>
+            <p>Check for updates:</p>
+            <pre><code>cd frontend
+npm outdated</code></pre>
+            
+            <p>Update packages:</p>
+            <pre><code>npm update</code></pre>
+            
+            <p>Update major versions (carefully):</p>
+            <pre><code>npm install react@latest react-dom@latest</code></pre>
+            
+            <h3>Backend Dependencies</h3>
+            <p>Update .NET packages:</p>
+            <pre><code>cd backend/FFJConsulting.API
+dotnet list package --outdated
+dotnet add package [PackageName]</code></pre>
+            
+            <h3>Update Process</h3>
+            <ol>
+                <li>Review changelogs for breaking changes</li>
+                <li>Update dependencies in development</li>
+                <li>Test thoroughly</li>
+                <li>Fix any breaking changes</li>
+                <li>Deploy to production</li>
+            </ol>
+            
+            <h2>Performance Monitoring</h2>
+            
+            <h3>Key Metrics</h3>
+            <ul>
+                <li><strong>Page Load Time:</strong> Target < 3 seconds</li>
+                <li><strong>Time to First Byte (TTFB):</strong> Target < 600ms</li>
+                <li><strong>Largest Contentful Paint (LCP):</strong> Target < 2.5 seconds</li>
+                <li><strong>Cumulative Layout Shift (CLS):</strong> Target < 0.1</li>
+            </ul>
+            
+            <h3>Monitoring Tools</h3>
+            <ul>
+                <li><strong>Google PageSpeed Insights:</strong> Performance analysis</li>
+                <li><strong>CloudWatch:</strong> AWS service metrics</li>
+                <li><strong>Browser DevTools:</strong> Network and performance tabs</li>
+                <li><strong>Lighthouse:</strong> Automated performance audits</li>
+            </ul>
+            
+            <h2>Error Monitoring</h2>
+            
+            <h3>Common Issues</h3>
+            <ul>
+                <li><strong>404 Errors:</strong> Check routing configuration</li>
+                <li><strong>MIME Type Errors:</strong> Verify content-types in S3</li>
+                <li><strong>CORS Errors:</strong> Check backend CORS configuration</li>
+                <li><strong>Build Failures:</strong> Check dependencies and Node.js version</li>
+            </ul>
+            
+            <h3>Logging</h3>
+            <ul>
+                <li>Check browser console for frontend errors</li>
+                <li>Review CloudWatch logs for AWS issues</li>
+                <li>Monitor backend logs for API errors</li>
+            </ul>
+            
+            <h2>Security Maintenance</h2>
+            
+            <h3>Regular Security Tasks</h3>
+            <ul>
+                <li>Update dependencies to patch vulnerabilities</li>
+                <li>Review AWS IAM permissions</li>
+                <li>Check SSL certificate expiration</li>
+                <li>Review access logs for suspicious activity</li>
+                <li>Keep AWS CLI and tools updated</li>
+            </ul>
+            
+            <h3>SSL Certificate</h3>
+            <p>ACM certificates auto-renew, but verify:</p>
+            <pre><code>aws acm list-certificates --profile my-sso --region us-east-1</code></pre>
+            
+            <h2>Backup & Recovery</h2>
+            
+            <h3>What to Backup</h3>
+            <ul>
+                <li>Source code (Git repository)</li>
+                <li>Content files (markdown, JSON)</li>
+                <li>Database (if using backend database)</li>
+                <li>Configuration files</li>
+            </ul>
+            
+            <h3>Backup Strategy</h3>
+            <ul>
+                <li><strong>Code:</strong> Git repository (GitHub)</li>
+                <li><strong>Content:</strong> Version controlled in Git</li>
+                <li><strong>S3:</strong> Enable versioning if needed</li>
+                <li><strong>Database:</strong> Regular automated backups</li>
+            </ul>
+            
+            <h2>Troubleshooting Guide</h2>
+            
+            <h3>Website Not Loading</h3>
+            <ol>
+                <li>Check CloudFront distribution status</li>
+                <li>Verify S3 bucket is accessible</li>
+                <li>Check DNS records in Route 53</li>
+                <li>Verify SSL certificate is valid</li>
+                <li>Check browser console for errors</li>
+            </ol>
+            
+            <h3>Content Not Updating</h3>
+            <ol>
+                <li>Invalidate CloudFront cache</li>
+                <li>Clear browser cache</li>
+                <li>Verify files uploaded to S3</li>
+                <li>Check file content-types</li>
+            </ol>
+            
+            <h3>Build Failures</h3>
+            <ul>
+                <li>Check Node.js version (should be v18+)</li>
+                <li>Delete <code>node_modules</code> and reinstall</li>
+                <li>Check for dependency conflicts</li>
+                <li>Review error messages carefully</li>
+            </ul>
+            
+            <h2>Optimization</h2>
+            
+            <h3>Performance Optimization</h3>
+            <ul>
+                <li>Optimize images (compress, use WebP)</li>
+                <li>Enable CloudFront compression</li>
+                <li>Minify CSS and JavaScript</li>
+                <li>Use lazy loading for images</li>
+                <li>Implement code splitting</li>
+            </ul>
+            
+            <h3>Cost Optimization</h3>
+            <ul>
+                <li>Monitor AWS usage and costs</li>
+                <li>Optimize CloudFront cache settings</li>
+                <li>Use appropriate S3 storage class</li>
+                <li>Review and optimize CloudFront price class</li>
+            </ul>
+            
+            <h2>Regular Maintenance Schedule</h2>
+            
+            <h3>Weekly</h3>
+            <ul>
+                <li>Check website is accessible</li>
+                <li>Review error logs</li>
+                <li>Monitor performance metrics</li>
+            </ul>
+            
+            <h3>Monthly</h3>
+            <ul>
+                <li>Update dependencies</li>
+                <li>Review and update content</li>
+                <li>Check security advisories</li>
+                <li>Review AWS costs</li>
+            </ul>
+            
+            <h3>Quarterly</h3>
+            <ul>
+                <li>Major dependency updates</li>
+                <li>Performance audit</li>
+                <li>Security review</li>
+                <li>Backup verification</li>
+            </ul>
+            
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Test changes in development before production</li>
+                <li>Keep documentation updated</li>
+                <li>Use version control for all changes</li>
+                <li>Document any manual configuration changes</li>
+                <li>Monitor and respond to issues promptly</li>
+                <li>Keep deployment scripts updated</li>
+            </ul>
+            
+            <h2>Getting Help</h2>
+            <ul>
+                <li>Check this documentation first</li>
+                <li>Review AWS CloudWatch logs</li>
+                <li>Check browser console for errors</li>
+                <li>Review deployment scripts for issues</li>
+                <li>Consult AWS documentation</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

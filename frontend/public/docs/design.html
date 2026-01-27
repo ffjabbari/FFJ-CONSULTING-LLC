@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .content h1 {
+            color: #f093fb;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+        }
+        
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .diagram-box {
+            background: #f8f9fa;
+            border-left: 4px solid #f093fb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+        
+        <div class="content">
+            <h1>Design</h1>
+            
+            <h2>Design Philosophy</h2>
+            <p>The FFJ Consulting LLC website was designed with a focus on modern aesthetics, user experience, and professional presentation. The design draws inspiration from leading technology companies while maintaining a unique identity.</p>
+            
+            <div class="diagram-box">
+                <h3>Core Design Principles</h3>
+                <ul>
+                    <li><strong>Modern & Professional:</strong> Clean, contemporary design that reflects technical expertise</li>
+                    <li><strong>Content-First:</strong> Design serves to highlight and organize content effectively</li>
+                    <li><strong>Responsive:</strong> Seamless experience across all device sizes</li>
+                    <li><strong>Accessible:</strong> Following WCAG guidelines for inclusive design</li>
+                    <li><strong>Performance:</strong> Fast loading times and smooth animations</li>
+                </ul>
+            </div>
+            
+            <h2>Color Scheme</h2>
+            <h3>Primary Colors</h3>
+            <ul>
+                <li><strong>Primary Gradient:</strong> #667eea → #764ba2 (Purple gradient)</li>
+                <li><strong>Accent Colors:</strong> Various gradients for different sections</li>
+                <li><strong>Text:</strong> #333 (dark gray) for readability</li>
+                <li><strong>Background:</strong> White with subtle gradients</li>
+            </ul>
+            
+            <h3>Color Usage</h3>
+            <ul>
+                <li><strong>Navigation:</strong> Purple gradient background with white text</li>
+                <li><strong>Cards:</strong> White background with colored top borders</li>
+                <li><strong>Buttons:</strong> Gradient backgrounds with hover effects</li>
+                <li><strong>Links:</strong> Purple accent color (#667eea)</li>
+            </ul>
+            
+            <h2>Typography</h2>
+            <h3>Font Stack</h3>
+            <pre><code>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+             'Helvetica Neue', Arial, sans-serif;</code></pre>
+            
+            <h3>Font Sizes</h3>
+            <ul>
+                <li><strong>Headings (H1):</strong> 2.5rem - 3rem</li>
+                <li><strong>Headings (H2):</strong> 1.8rem - 2rem</li>
+                <li><strong>Headings (H3):</strong> 1.3rem - 1.5rem</li>
+                <li><strong>Body Text:</strong> 1rem (16px)</li>
+                <li><strong>Small Text:</strong> 0.875rem (14px)</li>
+            </ul>
+            
+            <h2>Component Design</h2>
+            
+            <h3>Navigation Bar</h3>
+            <ul>
+                <li><strong>Style:</strong> Fixed top navigation with gradient background</li>
+                <li><strong>Features:</strong> Logo, menu items, mobile hamburger menu</li>
+                <li><strong>Behavior:</strong> Smooth scrolling to sections, active state highlighting</li>
+                <li><strong>Responsive:</strong> Collapses to hamburger menu on mobile</li>
+            </ul>
+            
+            <h3>Hero Section</h3>
+            <ul>
+                <li><strong>Purpose:</strong> First impression and main call-to-action</li>
+                <li><strong>Elements:</strong> Large heading, subtitle, background gradient</li>
+                <li><strong>Animation:</strong> Subtle fade-in on page load</li>
+            </ul>
+            
+            <h3>Card Components</h3>
+            <ul>
+                <li><strong>Technology Cards:</strong> Icon, title, description, hover effects</li>
+                <li><strong>Article Cards:</strong> Image, title, excerpt, read more link</li>
+                <li><strong>Tool Cards:</strong> Icon, name, category, description</li>
+                <li><strong>Design:</strong> White background, shadow, colored top border</li>
+                <li><strong>Hover:</strong> Lift effect with enhanced shadow</li>
+            </ul>
+            
+            <h3>Landing Page Animation</h3>
+            <p>The landing page features an animated GPU/TPU visualization:</p>
+            <ul>
+                <li><strong>Visual Elements:</strong> Chip representation with data flow</li>
+                <li><strong>Animation:</strong> Smooth transitions showing data processing</li>
+                <li><strong>Purpose:</strong> Demonstrates AI hardware concepts visually</li>
+                <li><strong>Technology:</strong> CSS animations and React state management</li>
+            </ul>
+            
+            <h2>Layout Structure</h2>
+            
+            <h3>Grid System</h3>
+            <ul>
+                <li><strong>Container:</strong> Max-width 1200px, centered</li>
+                <li><strong>Cards Grid:</strong> Responsive grid with auto-fill</li>
+                <li><strong>Breakpoints:</strong> Mobile (768px), Tablet (1024px), Desktop (1200px+)</li>
+            </ul>
+            
+            <h3>Spacing</h3>
+            <ul>
+                <li><strong>Section Padding:</strong> 60px - 100px vertical</li>
+                <li><strong>Card Padding:</strong> 30px - 40px</li>
+                <li><strong>Element Margins:</strong> Consistent 20px - 30px spacing</li>
+            </ul>
+            
+            <h2>Responsive Design</h2>
+            
+            <h3>Mobile First Approach</h3>
+            <p>The design follows a mobile-first approach, ensuring optimal experience on all devices:</p>
+            <ul>
+                <li><strong>Mobile (< 768px):</strong> Single column layout, stacked cards, hamburger menu</li>
+                <li><strong>Tablet (768px - 1024px):</strong> Two-column grid, expanded navigation</li>
+                <li><strong>Desktop (> 1024px):</strong> Multi-column grid, full navigation, hover effects</li>
+            </ul>
+            
+            <h3>Breakpoints</h3>
+            <pre><code>/* Mobile */
+@media (max-width: 768px) { ... }
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) { ... }
+
+/* Desktop */
+@media (min-width: 1025px) { ... }</code></pre>
+            
+            <h2>UI Components</h2>
+            
+            <h3>Buttons</h3>
+            <ul>
+                <li><strong>Primary:</strong> Gradient background, white text, rounded corners</li>
+                <li><strong>Hover:</strong> Scale effect (1.05x) with enhanced shadow</li>
+                <li><strong>Active:</strong> Slightly darker gradient</li>
+                <li><strong>Disabled:</strong> Reduced opacity, no interaction</li>
+            </ul>
+            
+            <h3>Links</h3>
+            <ul>
+                <li><strong>Style:</strong> Purple color (#667eea), underline on hover</li>
+                <li><strong>External:</strong> Opens in new tab with icon indicator</li>
+                <li><strong>Internal:</strong> Smooth scroll or React Router navigation</li>
+            </ul>
+            
+            <h3>Forms</h3>
+            <ul>
+                <li><strong>Input Fields:</strong> Rounded borders, focus states with purple outline</li>
+                <li><strong>Labels:</strong> Clear, accessible labels above inputs</li>
+                <li><strong>Validation:</strong> Error states with red borders and messages</li>
+            </ul>
+            
+            <h2>Animation & Transitions</h2>
+            
+            <h3>Animation Principles</h3>
+            <ul>
+                <li><strong>Purposeful:</strong> Animations enhance UX, not distract</li>
+                <li><strong>Smooth:</strong> 0.3s ease transitions for most effects</li>
+                <li><strong>Performance:</strong> CSS transforms for hardware acceleration</li>
+            </ul>
+            
+            <h3>Common Animations</h3>
+            <ul>
+                <li><strong>Fade In:</strong> Page load animations (0.5s - 1s)</li>
+                <li><strong>Hover Lift:</strong> Card elevation on hover (translateY -10px)</li>
+                <li><strong>Smooth Scroll:</strong> Section navigation with smooth behavior</li>
+                <li><strong>Loading States:</strong> Skeleton screens or spinners</li>
+            </ul>
+            
+            <h2>Accessibility</h2>
+            
+            <h3>WCAG Compliance</h3>
+            <ul>
+                <li><strong>Color Contrast:</strong> Meets WCAG AA standards (4.5:1 for text)</li>
+                <li><strong>Keyboard Navigation:</strong> All interactive elements accessible via keyboard</li>
+                <li><strong>Screen Readers:</strong> Proper ARIA labels and semantic HTML</li>
+                <li><strong>Focus Indicators:</strong> Visible focus states for keyboard users</li>
+            </ul>
+            
+            <h3>Semantic HTML</h3>
+            <ul>
+                <li>Proper use of heading hierarchy (h1 → h2 → h3)</li>
+                <li>Semantic elements (nav, main, article, section)</li>
+                <li>Alt text for all images</li>
+                <li>Form labels associated with inputs</li>
+            </ul>
+            
+            <h2>Design System</h2>
+            
+            <h3>Component Library</h3>
+            <p>The design system is built with reusable React components:</p>
+            <ul>
+                <li><strong>Navigation.jsx</strong> - Top navigation bar</li>
+                <li><strong>Hero.jsx</strong> - Hero section component</li>
+                <li><strong>AITechnologies.jsx</strong> - Technology cards grid</li>
+                <li><strong>Articles.jsx</strong> - Article listing component</li>
+                <li><strong>Tools.jsx</strong> - Tools showcase component</li>
+                <li><strong>Resume.jsx</strong> - Resume page component</li>
+                <li><strong>Footer.jsx</strong> - Site footer</li>
+            </ul>
+            
+            <h3>CSS Architecture</h3>
+            <ul>
+                <li><strong>Component CSS:</strong> Each component has its own CSS file</li>
+                <li><strong>Global Styles:</strong> index.css for base styles and variables</li>
+                <li><strong>Utility Classes:</strong> Reusable utility classes for common patterns</li>
+            </ul>
+            
+            <h2>Design Inspiration</h2>
+            <p>The design was inspired by:</p>
+            <ul>
+                <li><strong>Clear Digital:</strong> AI Enablement page - professional, modern, card-based layout</li>
+                <li><strong>Modern Tech Companies:</strong> Clean interfaces with gradient accents</li>
+                <li><strong>Best Practices:</strong> Following current web design trends and accessibility standards</li>
+            </ul>
+            
+            <h2>Future Design Enhancements</h2>
+            <ul>
+                <li>Dark mode support</li>
+                <li>Additional animation effects</li>
+                <li>Enhanced mobile interactions</li>
+                <li>Micro-interactions for better feedback</li>
+                <li>Advanced loading states</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

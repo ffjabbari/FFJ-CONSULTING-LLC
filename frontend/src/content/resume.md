@@ -106,10 +106,10 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 ## Additional Resources
 
 **FFJ Consulting Cloud and AI Hands on Architecture**  
-Visit our website: [http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com](http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com)
+Visit our website: [https://ffjconsultingllc.com](https://ffjconsultingllc.com)
 
 **AI History, Past and Present**  
-Read the AI Revolution article: [http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/article/ai-revolution-demo](http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com/article/ai-revolution-demo)
+Read the AI Revolution article: [https://ffjconsultingllc.com/article/ai-revolution-demo](https://ffjconsultingllc.com/article/ai-revolution-demo)
 
 **GitHub Source Code**  
-View how this website was built: [https://github.com/fjabbari/FFJ-CONSULTING-LLC](https://github.com/fjabbari/FFJ-CONSULTING-LLC)
+View how this website was built: [https://github.com/ffjabbari/FFJ-CONSULTING-LLC](https://github.com/ffjabbari/FFJ-CONSULTING-LLC)

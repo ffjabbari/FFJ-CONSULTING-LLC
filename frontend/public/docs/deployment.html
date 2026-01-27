@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .content h1 {
+            color: #43e97b;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+        }
+        
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .diagram-box {
+            background: #f8f9fa;
+            border-left: 4px solid #43e97b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+        
+        <div class="content">
+            <h1>Deployment</h1>
+            
+            <h2>Overview</h2>
+            <p>This guide covers the general deployment process for the FFJ Consulting LLC website. The deployment process involves building the frontend, preparing the backend, and deploying to a hosting platform.</p>
+            
+            <div class="diagram-box">
+                <h3>Deployment Pipeline</h3>
+                <pre><code>1. Build Frontend (npm run build)
+   ↓
+2. Test Locally
+   ↓
+3. Update Configuration
+   ↓
+4. Deploy to Hosting Platform
+   ↓
+5. Verify Deployment</code></pre>
+            </div>
+            
+            <h2>Pre-Deployment Checklist</h2>
+            <ul>
+                <li>✅ All code committed to version control</li>
+                <li>✅ Frontend builds successfully</li>
+                <li>✅ Backend compiles without errors</li>
+                <li>✅ Configuration files updated for production</li>
+                <li>✅ Environment variables set</li>
+                <li>✅ Database migrations applied (if applicable)</li>
+                <li>✅ Tests passing</li>
+            </ul>
+            
+            <h2>Build Process</h2>
+            
+            <h3>Frontend Build</h3>
+            <p>Build the React frontend for production:</p>
+            <pre><code>cd frontend
+npm install          # Install dependencies (if needed)
+npm run build        # Create production build</code></pre>
+            
+            <h4>Build Output</h4>
+            <ul>
+                <li><strong>Location:</strong> <code>frontend/dist/</code></li>
+                <li><strong>Contents:</strong>
+                    <ul>
+                        <li><code>index.html</code> - Main HTML file</li>
+                        <li><code>assets/</code> - JavaScript and CSS bundles</li>
+                        <li><code>images/</code> - Optimized images</li>
+                        <li><code>content/</code> - Markdown content files</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Backend Build</h3>
+            <p>Build the C# backend for production:</p>
+            <pre><code>cd backend/FFJConsulting.API
+dotnet restore       # Restore NuGet packages
+dotnet publish -c Release -o ./publish</code></pre>
+            
+            <h2>Configuration Updates</h2>
+            
+            <h3>Frontend Configuration</h3>
+            <p>Update <code>frontend/src/config.js</code>:</p>
+            <pre><code>export const SITE_URL = 'https://ffjconsultingllc.com'
+export const GITHUB_REPO = 'https://github.com/ffjabbari/FFJ-CONSULTING-LLC'
+export const API_URL = 'https://your-api-domain.com'</code></pre>
+            
+            <h3>Backend Configuration</h3>
+            <p>Update <code>backend/FFJConsulting.API/appsettings.json</code>:</p>
+            <ul>
+                <li>Set production database connection string</li>
+                <li>Configure CORS for production domain</li>
+                <li>Update logging levels</li>
+                <li>Set environment-specific settings</li>
+            </ul>
+            
+            <h2>Deployment Options</h2>
+            
+            <h3>Static Frontend Hosting</h3>
+            <p>The frontend is a static site and can be deployed to:</p>
+            <ul>
+                <li><strong>AWS S3 + CloudFront</strong> (Current production setup)</li>
+                <li><strong>Netlify</strong> - Automatic deployments from Git</li>
+                <li><strong>Vercel</strong> - Optimized for React apps</li>
+                <li><strong>GitHub Pages</strong> - Free static hosting</li>
+                <li><strong>Azure Static Web Apps</strong> - Integrated with Azure</li>
+            </ul>
+            
+            <h3>Backend Hosting</h3>
+            <p>The backend API can be deployed to:</p>
+            <ul>
+                <li><strong>AWS Elastic Beanstalk</strong> - Managed .NET hosting</li>
+                <li><strong>AWS EC2</strong> - Virtual server</li>
+                <li><strong>Azure App Service</strong> - Managed .NET hosting</li>
+                <li><strong>Heroku</strong> - Platform as a service</li>
+                <li><strong>Docker Container</strong> - Containerized deployment</li>
+            </ul>
+            
+            <h2>Deployment Scripts</h2>
+            
+            <h3>Automated Deployment</h3>
+            <p>Use the provided deployment scripts:</p>
+            
+            <h4>Python Script</h4>
+            <pre><code>python3 deploy.py</code></pre>
+            <p>This script:
+            <ul>
+                <li>Builds the frontend</li>
+                <li>Deploys to S3</li>
+                <li>Sets correct content-types</li>
+                <li>Invalidates CloudFront cache</li>
+            </ul>
+            
+            <h4>Bash Script</h4>
+            <pre><code>./deploy-with-new-domain.sh</code></pre>
+            <p>Alternative bash script with the same functionality.</p>
+            
+            <h2>Manual Deployment Steps</h2>
+            
+            <h3>Step 1: Build</h3>
+            <pre><code>cd frontend
+npm run build</code></pre>
+            
+            <h3>Step 2: Review Build Output</h3>
+            <ul>
+                <li>Check <code>dist/</code> folder exists</li>
+                <li>Verify all files are present</li>
+                <li>Test <code>index.html</code> locally</li>
+            </ul>
+            
+            <h3>Step 3: Deploy Files</h3>
+            <p>Upload files to your hosting platform using the platform's deployment method.</p>
+            
+            <h3>Step 4: Verify</h3>
+            <ul>
+                <li>Visit the deployed URL</li>
+                <li>Check all pages load correctly</li>
+                <li>Verify images and assets load</li>
+                <li>Test navigation and routing</li>
+            </ul>
+            
+            <h2>Post-Deployment</h2>
+            
+            <h3>Verification Checklist</h3>
+            <ul>
+                <li>✅ Website loads at production URL</li>
+                <li>✅ All pages accessible</li>
+                <li>✅ Images and assets load correctly</li>
+                <li>✅ Navigation works</li>
+                <li>✅ API endpoints respond (if backend deployed)</li>
+                <li>✅ SSL certificate valid (HTTPS)</li>
+                <li>✅ Mobile responsive design works</li>
+                <li>✅ Performance is acceptable</li>
+            </ul>
+            
+            <h3>Monitoring</h3>
+            <ul>
+                <li>Monitor error logs</li>
+                <li>Check performance metrics</li>
+                <li>Set up uptime monitoring</li>
+                <li>Configure alerts for issues</li>
+            </ul>
+            
+            <h2>Rollback Procedure</h2>
+            <p>If deployment fails or issues are discovered:</p>
+            <ol>
+                <li>Identify the problematic version</li>
+                <li>Revert to previous working version</li>
+                <li>Redeploy previous build</li>
+                <li>Investigate and fix issues</li>
+                <li>Redeploy fixed version</li>
+            </ol>
+            
+            <h2>Continuous Deployment</h2>
+            <p>For automated deployments, consider:</p>
+            <ul>
+                <li><strong>GitHub Actions:</strong> Deploy on push to main branch</li>
+                <li><strong>CI/CD Pipeline:</strong> Automated build and deploy</li>
+                <li><strong>Webhooks:</strong> Trigger deployments from Git events</li>
+            </ul>
+            
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Always test builds locally before deploying</li>
+                <li>Use version control for all code</li>
+                <li>Tag releases for easy rollback</li>
+                <li>Document deployment process</li>
+                <li>Keep deployment scripts updated</li>
+                <li>Monitor deployments for issues</li>
+            </ul>
+            
+            <h2>Common Issues</h2>
+            <ul>
+                <li><strong>Build Failures:</strong> Check dependencies and Node.js version</li>
+                <li><strong>404 Errors:</strong> Verify routing configuration for SPA</li>
+                <li><strong>Asset Loading:</strong> Check file paths and content-types</li>
+                <li><strong>CORS Errors:</strong> Verify backend CORS configuration</li>
+                <li><strong>Cache Issues:</strong> Clear browser and CDN cache</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
