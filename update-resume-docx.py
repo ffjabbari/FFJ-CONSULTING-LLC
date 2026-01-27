@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Update the .docx resume file with AWS website links
+Update the .docx resume file with website links
 """
 
 import sys
@@ -8,19 +8,35 @@ from pathlib import Path
 
 try:
     from docx import Document
-    from docx.shared import Pt
-    from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+    from docx.oxml import parse_xml
+    from docx.oxml.ns import nsdecls
 except ImportError:
     print("Installing python-docx...")
     import subprocess
     subprocess.check_call([sys.executable, "-m", "pip", "install", "python-docx", "--user", "--quiet"])
     from docx import Document
-    from docx.shared import Pt
-    from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+    from docx.oxml import parse_xml
+    from docx.oxml.ns import nsdecls
 
 RESUME_PATH = "/Users/fjabbari/@@@PUBLIC/@@@RESUME_2026/Fred_Jabbari_Resume_Optimized_2026_with_Bedrock_BDAGood001.docx"
-WEBSITE_URL = "http://ffj-consulting-website.s3-website-us-east-1.amazonaws.com"
-GITHUB_URL = "https://github.com/fjabbari/FFJ-CONSULTING-LLC"
+WEBSITE_URL = "https://ffjconsultingllc.com"
+GITHUB_URL = "https://github.com/ffjabbari/FFJ-CONSULTING-LLC"
+
+def add_hyperlink(paragraph, url, text):
+    """Add a hyperlink to a paragraph"""
+    part = paragraph.part
+    r_id = part.relate_to(url, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink", is_external=True)
+    
+    # Create the hyperlink XML with proper namespace declarations
+    hyperlink_xml = (
+        '<w:hyperlink r:id="%s" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" '
+        'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+        '<w:r><w:rPr><w:color w:val="0563C1"/><w:u w:val="single"/></w:rPr><w:t>%s</w:t></w:r>'
+        '</w:hyperlink>' % (r_id, text)
+    )
+    
+    hyperlink = parse_xml(hyperlink_xml)
+    paragraph._p.append(hyperlink)
 
 def update_resume():
     """Add links section to the resume"""
@@ -43,26 +59,25 @@ def update_resume():
         
         # Add website link
         p1 = doc.add_paragraph()
-        p1.add_run("FFJ Consulting Cloud and AI Hands on Architecture: ").bold = True
-        website_run = p1.add_run(WEBSITE_URL)
-        website_run.font.color.rgb = None  # Default color
-        website_run.hyperlink.address = WEBSITE_URL
+        p1.add_run("FFJ Consulting LLC Website: ").bold = True
+        add_hyperlink(p1, WEBSITE_URL, WEBSITE_URL)
         
         # Add article link
         p2 = doc.add_paragraph()
         p2.add_run("AI History, Past and Present: ").bold = True
         article_url = f"{WEBSITE_URL}/article/ai-revolution-demo"
-        article_run = p2.add_run(article_url)
-        article_run.hyperlink.address = article_url
+        add_hyperlink(p2, article_url, article_url)
         
         # Add GitHub link
         p3 = doc.add_paragraph()
         p3.add_run("GitHub Source Code: ").bold = True
-        github_run = p3.add_run(GITHUB_URL)
-        github_run.hyperlink.address = GITHUB_URL
+        add_hyperlink(p3, GITHUB_URL, GITHUB_URL)
         
-        # Save the updated document
-        output_path = RESUME_PATH.replace('.docx', '_with_links.docx')
+        # Save the updated document to current directory
+        import os
+        resume_filename = os.path.basename(RESUME_PATH)
+        output_filename = resume_filename.replace('.docx', '_with_links.docx')
+        output_path = os.path.join(os.getcwd(), output_filename)
         doc.save(output_path)
         
         print(f"✅ Resume updated successfully!")
@@ -73,11 +88,13 @@ def update_resume():
         
     except Exception as e:
         print(f"❌ Error updating resume: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return False
 
 if __name__ == "__main__":
     print("="*60)
-    print("Updating Resume with AWS Links")
+    print("Updating Resume with Website Links")
     print("="*60)
     print()
     

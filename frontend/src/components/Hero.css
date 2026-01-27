@@ -100,21 +100,60 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 100px 1rem 3rem;
+    min-height: 80vh;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
   }
   
   .hero-cta {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
   }
   
   .btn-primary,
   .btn-secondary {
     width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 90px 0.75rem 2rem;
+    min-height: 75vh;
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
   }
 }

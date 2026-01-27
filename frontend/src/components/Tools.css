@@ -5,7 +5,7 @@
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -169,7 +169,58 @@
 }
 
 @media (max-width: 768px) {
+  .tools {
+    padding: 3rem 1rem;
+  }
+  
   .tools-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .tool-card {
+    padding: 1.5rem;
+  }
+  
+  .tool-name {
+    font-size: 1.5rem;
+  }
+  
+  .tool-description {
+    font-size: 1rem;
+  }
+  
+  .tool-actions {
+    flex-direction: column;
+  }
+  
+  .tool-link,
+  .tool-link-secondary {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .tools {
+    padding: 2rem 0.75rem;
+  }
+  
+  .tool-card {
+    padding: 1.25rem;
+  }
+  
+  .tool-name {
+    font-size: 1.3rem;
+  }
+  
+  .tool-description {
+    font-size: 0.95rem;
+  }
+  
+  .tool-link,
+  .tool-link-secondary {
+    padding: 0.9rem 1.25rem;
+    font-size: 0.95rem;
   }
 }
