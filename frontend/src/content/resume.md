@@ -59,7 +59,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 - Developed full-stack solutions using modern UI frameworks and backend services across multiple stacks.
 
 ### American Fork / Park City, UT
-**Senior Full-Stack Developer / Cloud-Native Engineer** | Mar 2017 – Nov 2017
+**Senior Full-Stack Developer / Cloud-Native Engineer** | Jan 2017 – Jan 2018
 
 - Designed and built cloud-native microservices supporting high availability and distributed workloads.
 - Implemented Kubernetes/Rancher deployments and service configuration/discovery patterns.
