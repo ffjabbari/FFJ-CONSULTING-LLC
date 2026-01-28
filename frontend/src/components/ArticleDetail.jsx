@@ -38,10 +38,11 @@ function ArticleDetail() {
         response = await fetch(`/src/content/${contentFile}`)
       }
       
-      // If still not found, try importing directly
+      // If still not found, try importing directly (extension .md must be static for Vite)
       if (!response.ok) {
         try {
-          const module = await import(`../content/${contentFile}?raw`)
+          const baseName = contentFile.replace(/\.md$/, '')
+          const module = await import(`../content/${baseName}.md?raw`)
           setContent(module.default)
           setLoading(false)
           return
