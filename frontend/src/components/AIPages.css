@@ -103,6 +103,41 @@
   margin: 1rem 0 0.75rem;
 }
 
+.ai-links-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ai-button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(226, 232, 240, 0.95);
+  padding: 0.7rem 0.95rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.ai-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(102, 126, 234, 0.6);
+}
+
+.ai-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ai-button-secondary {
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .ai-search {
   display: flex;
   flex-direction: column;
@@ -180,6 +215,87 @@
   text-decoration: underline;
 }
 
+.ai-add-form {
+  margin: 0.75rem 0 1rem;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ai-add-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.ai-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ai-field span {
+  font-size: 0.9rem;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.ai-field input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(226, 232, 240, 0.95);
+  outline: none;
+}
+
+.ai-field-full {
+  grid-column: 1 / -1;
+}
+
+.ai-add-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+.ai-error {
+  color: #fecaca;
+  font-weight: 700;
+}
+
+.ai-add-hint {
+  margin-left: auto;
+  color: rgba(226, 232, 240, 0.7);
+  font-size: 0.9rem;
+}
+
+.ai-app-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ai-link-remove {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(226, 232, 240, 0.85);
+  padding: 0.35rem 0.6rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ai-link-remove:hover {
+  border-color: rgba(248, 113, 113, 0.65);
+  background: rgba(248, 113, 113, 0.12);
+}
+
 @media (max-width: 900px) {
   .ai-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -210,5 +326,13 @@
 
   .ai-search {
     max-width: 100%;
+  }
+
+  .ai-add-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-add-hint {
+    margin-left: 0;
   }
 }
