@@ -10,6 +10,8 @@ import Tools from './components/Tools'
 import Footer from './components/Footer'
 import ArticleDetail from './components/ArticleDetail'
 import Resume from './components/Resume'
+import AgenticAI from './components/AgenticAI'
+import GenerativeAI from './components/GenerativeAI'
 import './App.css'
 
 function MainSite() {
@@ -57,6 +59,8 @@ function AppContent() {
       <Route path="/" element={<MainSite />} />
       <Route path="/article/:articleId" element={<ArticleDetail />} />
       <Route path="/resume" element={<Resume />} />
+      <Route path="/agentic-ai" element={<AgenticAI />} />
+      <Route path="/generative-ai" element={<GenerativeAI />} />
     </Routes>
   )
 }

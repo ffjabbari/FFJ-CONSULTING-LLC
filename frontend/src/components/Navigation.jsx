@@ -34,6 +34,18 @@ function Navigation() {
     setIsMenuOpen(false)
   }
 
+  const handleAgenticAIClick = (e) => {
+    e.preventDefault()
+    navigate('/agentic-ai')
+    setIsMenuOpen(false)
+  }
+
+  const handleGenerativeAIClick = (e) => {
+    e.preventDefault()
+    navigate('/generative-ai')
+    setIsMenuOpen(false)
+  }
+
   const handleHomeClick = (e) => {
     e.preventDefault()
     if (location.pathname !== '/') {
@@ -75,6 +87,8 @@ function Navigation() {
         <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <li><a href="/" onClick={handleHomeClick}>Home</a></li>
           <li><a href="/#technologies" onClick={(e) => { e.preventDefault(); scrollToSection('technologies') }}>AI Technologies</a></li>
+          <li><a href="/agentic-ai" onClick={handleAgenticAIClick}>Agentic AI</a></li>
+          <li><a href="/generative-ai" onClick={handleGenerativeAIClick}>Generative AI</a></li>
           <li><a href="/#articles" onClick={(e) => { e.preventDefault(); scrollToSection('articles') }}>Articles</a></li>
           <li><a href="/#tools" onClick={(e) => { e.preventDefault(); scrollToSection('tools') }}>Tools</a></li>
           <li><a href="/resume" onClick={handleResumeClick}>Resume</a></li>
