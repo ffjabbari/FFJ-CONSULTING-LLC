@@ -69,6 +69,14 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 
 - **CDK Enterprises** — Senior Full-Stack Developer (Cloud Native / Kubernetes) | 2016 – 2017
 - **SAIC** — Senior Full-Stack Developer (Cloud Native / Kubernetes) | 2015 – 2016
+  - **General Healthcare Experience (Selected)**
+    - Led design of AWS-hosted CMS platforms with a focus on scalability and accessibility.
+    - Defined modernization roadmaps integrating legacy systems with cloud-native services; partnered with stakeholders to drive alignment and adoption.
+    - Implemented IdP/SSO integrations (Okta) for authentication and authorization to AWS-based services.
+    - Delivered Infrastructure as Code using CloudFormation, Terraform, AWS CDK, and CDKTF; built POCs for automated AWS tagging with EventBridge.
+    - Built CI/CD pipelines using GitHub Actions, Jenkins, Octopus, and env0 for AWS and on‑prem deployments.
+    - Monitored and optimized systems using CloudWatch and Trusted Advisor to improve reliability and resource utilization.
+    - Applied PII and accessibility guidelines; ensured compliance with HIPAA and MARS‑E and AWS security best practices (IAM, VPC, encryption).
 - **Spectrum Health** — Senior Full-Stack Developer (Microservices) | 2013 – 2015
 - **US Bank** — Senior Full-Stack Developer / Architect (Microservices) | 2012 – 2013
 - **General Electric (Mayo Clinic IoT)** — Senior Developer (IoT + Enterprise Systems) | 2009 – 2012
