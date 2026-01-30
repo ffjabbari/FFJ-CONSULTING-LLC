@@ -122,6 +122,10 @@ header h1 {
     border-top: 4px solid #fee140;
 }
 
+.how-to-change-card {
+    border-top: 4px solid #ff9f1c;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     header h1 {

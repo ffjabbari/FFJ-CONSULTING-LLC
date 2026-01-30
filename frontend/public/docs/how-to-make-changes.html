@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Make Changes - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content h1 {
+            color: #ff9f1c;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .callout {
+            background: #f8f9fa;
+            border-left: 4px solid #ff9f1c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+
+        <div class="content">
+            <h1>How to Make Changes to this Website</h1>
+
+            <h2>What this page is for</h2>
+            <p>
+                This guide explains the practical, real-world steps to maintain the FFJ Consulting LLC website:
+                where the code lives on your laptop, how the site is hosted on AWS, how to update content (especially the resume),
+                how to deploy, and how to push updates to GitHub.
+            </p>
+
+            <div class="callout">
+                <h3>Quick Summary (Most Common Workflow)</h3>
+                <ol>
+                    <li>Edit the content (resume, articles, links, docs) in the repo</li>
+                    <li>Commit locally and push to GitHub</li>
+                    <li>Deploy to AWS (S3 + CloudFront invalidation)</li>
+                    <li>Hard refresh / use incognito to confirm the update (cache)</li>
+                </ol>
+            </div>
+
+            <h2>Where the repository lives (your local machine)</h2>
+            <p><strong>Local path:</strong></p>
+            <pre><code>/Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC</code></pre>
+
+            <p><strong>GitHub repository:</strong></p>
+            <pre><code>https://github.com/ffjabbari/FFJ-CONSULTING-LLC</code></pre>
+
+            <h2>Production URLs</h2>
+            <ul>
+                <li><strong>Primary site:</strong> <code>https://ffjconsultingllc.com</code></li>
+                <li><strong>WWW alias:</strong> <code>https://www.ffjconsultingllc.com</code></li>
+                <li><strong>Resume page:</strong> <code>https://ffjconsultingllc.com/resume</code></li>
+                <li><strong>Docs portal:</strong> <code>https://ffjconsultingllc.com/docs</code></li>
+            </ul>
+
+            <h2>How the website is hosted on AWS</h2>
+            <p>This website is a static React build hosted on AWS. The key AWS resources involved are:</p>
+            <ul>
+                <li><strong>S3 bucket</strong> (static site files): <code>ffj-consulting-website</code></li>
+                <li><strong>CloudFront distribution</strong> (CDN + HTTPS): <code>E3545N3N8YO2FZ</code></li>
+                <li><strong>ACM certificate</strong> (TLS/HTTPS): issued for <code>ffjconsultingllc.com</code> and/or <code>www.ffjconsultingllc.com</code></li>
+                <li><strong>Route 53</strong> (DNS): routes the domain to CloudFront</li>
+            </ul>
+
+            <div class="callout">
+                <h3>Important: Caching</h3>
+                <p>
+                    CloudFront caches files. Even after a successful deploy, your browser may still show old content.
+                    If something “didn’t update,” try:
+                </p>
+                <ul>
+                    <li>Wait 1–5 minutes (CloudFront invalidation)</li>
+                    <li>Hard refresh (Cmd+Shift+R)</li>
+                    <li>Use incognito / private window</li>
+                </ul>
+            </div>
+
+            <h2>Technical architecture (high level)</h2>
+            <pre><code>Browser
+  -> CloudFront (CDN + TLS)
+      -> S3 bucket (static files: index.html, assets/, content/, docs/, images/)
+</code></pre>
+
+            <p>
+                There is also a backend project in this repository (ASP.NET Core), but the current production site is
+                primarily a static frontend hosted from S3/CloudFront. The backend can be deployed later if you choose.
+            </p>
+
+            <h2>Where content lives in the repo</h2>
+            <ul>
+                <li><strong>React app:</strong> <code>frontend/src</code></li>
+                <li><strong>Static content served at runtime:</strong> <code>frontend/public</code></li>
+                <li><strong>Docs pages served at /docs:</strong> <code>frontend/public/docs</code> (copied to <code>dist/docs</code> when building)</li>
+                <li><strong>Resume served at /content/resume.md:</strong> <code>frontend/public/content/resume.md</code></li>
+            </ul>
+
+            <div class="callout">
+                <h3>Docs folder note</h3>
+                <p>
+                    There are two copies of docs in this repo: <code>Docs/</code> and <code>frontend/public/docs/</code>.
+                    The deployed website uses <code>frontend/public/docs/</code>. Keep them in sync (or treat
+                    <code>frontend/public/docs/</code> as the source of truth).
+                </p>
+            </div>
+
+            <h2>How to run locally (preview changes before deploy)</h2>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC/frontend
+npm install
+npm run dev
+</code></pre>
+            <p>Then open the URL Vite prints (typically <code>http://localhost:3000</code> or <code>http://localhost:5173</code>).</p>
+
+            <h2>How to deploy to AWS (recommended)</h2>
+            <p>Use the automated deploy script (builds the frontend, syncs to S3, fixes JS MIME type, invalidates CloudFront):</p>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC
+./deploy-with-new-domain.sh
+</code></pre>
+            <p>
+                This deploy targets:
+                <code>ffj-consulting-website</code> (S3), CloudFront distribution <code>E3545N3N8YO2FZ</code>,
+                AWS profile <code>my-sso</code>, region <code>us-east-1</code>.
+            </p>
+
+            <h2>How to push changes to GitHub (local + remote)</h2>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC
+git status
+git add -A
+git commit -m "Describe your change"
+git push origin master
+</code></pre>
+
+            <h2>How to update the website resume (markdown)</h2>
+            <p>The Resume page reads <code>/content/resume.md</code> at runtime, so update:</p>
+            <ul>
+                <li><code>frontend/public/content/resume.md</code> (this is what gets deployed)</li>
+                <li><code>frontend/src/content/resume.md</code> (keep in sync for source editing/history)</li>
+            </ul>
+            <p>After updating, deploy:</p>
+            <pre><code>./deploy-with-new-domain.sh</code></pre>
+
+            <h2>How to update the Word resume (.docx)</h2>
+            <p>Your Word resume is stored outside the repo in:</p>
+            <pre><code>/Users/fjabbari/@@@PUBLIC/@@@RESUME_2026/</code></pre>
+
+            <h3>Scripts you can run from the repo root</h3>
+            <ul>
+                <li><code>update-resume-docx.py</code> — generates a “with links” version of the resume</li>
+                <li><code>fix-resume-date-docx.py</code> — one-off: fix a date range in the .docx</li>
+                <li><code>add-healthcare-experience-docx.py</code> — insert “General Healthcare Experience” under SAIC</li>
+            </ul>
+
+            <h2>Common troubleshooting</h2>
+            <h3>“My change deployed but I don’t see it”</h3>
+            <ol>
+                <li>Open the raw file directly (example): <code>https://ffjconsultingllc.com/content/resume.md</code></li>
+                <li>Use incognito/private window</li>
+                <li>Hard refresh (Cmd+Shift+R)</li>
+                <li>Wait for CloudFront invalidation to complete</li>
+            </ol>
+
+            <h3>“Links I add on the AI pages don’t show for everyone”</h3>
+            <p>
+                The “Add Link” feature currently stores new entries in your browser (localStorage) so you can
+                quickly curate links without a backend. That means it is per-browser/per-device.
+                If you want a shared admin UI for everyone, that requires an AWS backend (API + database).
+            </p>
+
+            <h2>Future improvements (optional)</h2>
+            <ul>
+                <li>Add an admin backend (API + DynamoDB) to manage AI links centrally</li>
+                <li>Add CI/CD (GitHub Actions) to auto-deploy on push</li>
+                <li>Add monitoring (CloudWatch metrics/alarms for CloudFront, logs via S3 access logs)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
