@@ -46,6 +46,12 @@ function Navigation() {
     setIsMenuOpen(false)
   }
 
+  const handleJobSearchClick = (e) => {
+    e.preventDefault()
+    navigate('/job-search')
+    setIsMenuOpen(false)
+  }
+
   const handleHomeClick = (e) => {
     e.preventDefault()
     if (location.pathname !== '/') {
@@ -89,6 +95,7 @@ function Navigation() {
           <li><a href="/#technologies" onClick={(e) => { e.preventDefault(); scrollToSection('technologies') }}>AI Technologies</a></li>
           <li><a href="/agentic-ai" onClick={handleAgenticAIClick}>Agentic AI</a></li>
           <li><a href="/generative-ai" onClick={handleGenerativeAIClick}>Generative AI</a></li>
+          <li><a href="/job-search" onClick={handleJobSearchClick}>Job Search</a></li>
           <li><a href="/#articles" onClick={(e) => { e.preventDefault(); scrollToSection('articles') }}>Articles</a></li>
           <li><a href="/#tools" onClick={(e) => { e.preventDefault(); scrollToSection('tools') }}>Tools</a></li>
           <li><a href="/resume" onClick={handleResumeClick}>Resume</a></li>

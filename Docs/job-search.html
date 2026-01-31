@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content h1 {
+            color: #4facfe;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .callout {
+            background: #f8f9fa;
+            border-left: 4px solid #4facfe;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+
+        <div class="content">
+            <h1>Job Search Assistant</h1>
+
+            <h2>Where it is on the website</h2>
+            <p>
+                The Job Search Assistant is available at:
+                <code>https://ffjconsultingllc.com/job-search</code>
+            </p>
+
+            <h2>What it does (simple, compliant approach)</h2>
+            <p>
+                This feature generates <strong>LinkedIn job search links</strong> based on either:
+            </p>
+            <ul>
+                <li>a short keyword phrase you type (example: <code>aws architect</code>)</li>
+                <li>or a longer resume text paste (to detect skills/titles)</li>
+            </ul>
+
+            <div class="callout">
+                <h3>Important</h3>
+                <p>
+                    The app does <strong>not</strong> scrape LinkedIn and does not auto-apply for jobs.
+                    It creates clickable searches that open LinkedIn in a new tab.
+                </p>
+            </div>
+
+            <h2>How searches are generated</h2>
+            <ol>
+                <li><strong>Input:</strong> You type a preferred title or paste resume text.</li>
+                <li><strong>Detection:</strong> The app detects common skills (AWS, Terraform, Kubernetes, etc.) and roles.</li>
+                <li><strong>URL generation:</strong> It builds LinkedIn search URLs like:
+                    <pre><code>https://www.linkedin.com/jobs/search/?keywords=Cloud+Architect+AWS+Terraform&amp;location=United+States</code></pre>
+                </li>
+                <li><strong>Open:</strong> You click a link (or use "Open top 3") to open LinkedIn in new tabs.</li>
+            </ol>
+
+            <h2>Filters (best-effort)</h2>
+            <p>
+                The UI includes toggles like <strong>Easy Apply</strong> and <strong>Remote only</strong>. These are
+                encoded into the LinkedIn URL using common query parameters. LinkedIn can change these parameters over time.
+                If a filter link ever stops working, simply re-run the search and apply filters in LinkedIn directly.
+            </p>
+
+            <h2>How to update/improve it</h2>
+            <ul>
+                <li><strong>Frontend code:</strong> <code>frontend/src/components/JobSearchAssistant.jsx</code></li>
+                <li><strong>Styling:</strong> <code>frontend/src/components/JobSearchAssistant.css</code></li>
+            </ul>
+
+            <h2>Future enhancements (optional)</h2>
+            <ul>
+                <li>Resume upload (PDF/DOCX) and text extraction</li>
+                <li>Better skill/title extraction using an LLM (Bedrock) behind a backend API</li>
+                <li>Job aggregation from sources that allow APIs (ATS feeds, public job boards)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

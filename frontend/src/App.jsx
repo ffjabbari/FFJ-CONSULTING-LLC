@@ -12,6 +12,7 @@ import ArticleDetail from './components/ArticleDetail'
 import Resume from './components/Resume'
 import AgenticAI from './components/AgenticAI'
 import GenerativeAI from './components/GenerativeAI'
+import JobSearchAssistant from './components/JobSearchAssistant'
 import './App.css'
 
 function MainSite() {
@@ -61,6 +62,7 @@ function AppContent() {
       <Route path="/resume" element={<Resume />} />
       <Route path="/agentic-ai" element={<AgenticAI />} />
       <Route path="/generative-ai" element={<GenerativeAI />} />
+      <Route path="/job-search" element={<JobSearchAssistant />} />
     </Routes>
   )
 }

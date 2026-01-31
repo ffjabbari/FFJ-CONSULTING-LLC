@@ -1,0 +1,271 @@
+.job-search-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding-top: 80px;
+}
+
+.job-search-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.job-search-header h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2.2rem;
+  color: #0a0e27;
+}
+
+.job-search-header p {
+  margin: 0 0 1.5rem 0;
+  color: #555;
+  line-height: 1.7;
+}
+
+.job-search-form {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: #fbfbfd;
+}
+
+.job-search-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.job-search-form label span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #0a0e27;
+}
+
+.job-search-form input,
+.job-search-form textarea {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  outline: none;
+  font-size: 1rem;
+  background: white;
+}
+
+.job-search-form textarea {
+  resize: vertical;
+}
+
+.job-search-toggles {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 0.25rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.job-search-resume {
+  margin-top: 1rem;
+  display: block;
+}
+
+.job-search-signals {
+  margin-top: 1rem;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.job-search-live-hint {
+  margin-top: 0.75rem;
+  color: #555;
+}
+
+.job-search-generated {
+  margin-top: 1rem;
+  border: 1px solid #e6e6e6;
+  background: white;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.job-search-generated-title {
+  color: #0a0e27;
+  margin-bottom: 0.6rem;
+}
+
+.job-search-generated-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.job-search-generated-links a {
+  color: #667eea;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.job-search-generated-links a:hover {
+  text-decoration: underline;
+}
+
+.job-search-results {
+  margin-top: 1.75rem;
+}
+
+.job-search-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.job-search-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.job-search-results-header h2 {
+  margin: 0;
+  color: #0a0e27;
+}
+
+.job-search-btn {
+  background: #667eea;
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.job-search-btn:hover {
+  opacity: 0.95;
+}
+
+.job-search-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.job-search-btn-secondary {
+  background: #0a0e27;
+}
+
+.job-search-copy-status {
+  font-weight: 700;
+  color: #0a0e27;
+}
+
+.job-search-empty {
+  border: 1px dashed #d8d8d8;
+  background: #fbfbfd;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #333;
+}
+
+.job-search-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.job-search-item {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1rem;
+  background: white;
+}
+
+.job-search-item-title a {
+  font-weight: 800;
+  color: #667eea;
+  text-decoration: none;
+}
+
+.job-search-item-title a:hover {
+  text-decoration: underline;
+}
+
+.job-search-item-reason {
+  margin-top: 0.35rem;
+  color: #555;
+}
+
+.job-search-item-url {
+  margin-top: 0.5rem;
+  color: #444;
+  overflow-x: auto;
+}
+
+.job-search-item-url code {
+  font-size: 0.85rem;
+}
+
+.job-search-empty {
+  border: 1px dashed #d8d8d8;
+  background: #fbfbfd;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #333;
+}
+
+.job-search-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid #667eea;
+  background: #f5f7ff;
+  border-radius: 6px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .job-search-page {
+    padding-top: 70px;
+  }
+
+  .job-search-container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .job-search-row {
+    grid-template-columns: 1fr;
+  }
+
+  .job-search-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .job-search-results-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+}
+

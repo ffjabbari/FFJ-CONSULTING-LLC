@@ -126,6 +126,10 @@ header h1 {
     border-top: 4px solid #ff9f1c;
 }
 
+.job-search-card {
+    border-top: 4px solid #4facfe;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     header h1 {
