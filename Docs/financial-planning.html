@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Planning - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content h1 {
+            color: #43e97b;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .callout {
+            background: #f8f9fa;
+            border-left: 4px solid #43e97b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+
+        <div class="content">
+            <h1>Financial Planning (Portfolio Analysis)</h1>
+
+            <h2>Where it is on the website</h2>
+            <p>
+                The Financial Planning app is available at:
+                <code>https://ffjconsultingllc.com/financial-planning</code>
+            </p>
+
+            <h2>What it does</h2>
+            <p>
+                This is a starter portfolio analysis tool designed to help you understand:
+            </p>
+            <ul>
+                <li>Portfolio allocation by holding</li>
+                <li>Market value, cost, and gain/loss</li>
+                <li>Top holdings concentration</li>
+            </ul>
+
+            <div class="callout">
+                <strong>Disclaimer:</strong> Educational purposes only. Not financial advice.
+            </div>
+
+            <h2>How to use it</h2>
+            <ol>
+                <li>Add your positions (Ticker, Shares, Cost basis, Current price).</li>
+                <li>Review computed totals (portfolio value, total cost, gain/loss).</li>
+                <li>Use the allocation chart to see concentration.</li>
+            </ol>
+
+            <h2>Saved portfolios (multiple)</h2>
+            <p>
+                You can create multiple portfolios (e.g., <em>Retirement</em>, <em>Trading</em>, <em>Long-term</em>).
+                These are stored in your browser (localStorage), so they persist across refreshes on the same device/browser.
+            </p>
+
+            <h2>Import / Export CSV</h2>
+            <p>
+                You can export your positions to CSV and re-import them later. Format:
+                <code>ticker,shares,costBasis,currentPrice</code>
+            </p>
+
+            <h2>Delayed / manual data</h2>
+            <p>
+                This version is intentionally “delayed/manual friendly”: you can paste current prices from your broker or another source.
+                Later we can add delayed quote lookups via a backend proxy if needed.
+            </p>
+
+            <h2>Where the code lives</h2>
+            <ul>
+                <li><strong>UI:</strong> <code>frontend/src/components/FinancialPlanning.jsx</code></li>
+                <li><strong>Styles:</strong> <code>frontend/src/components/FinancialPlanning.css</code></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

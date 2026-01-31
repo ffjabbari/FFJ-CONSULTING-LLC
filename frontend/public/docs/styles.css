@@ -130,6 +130,10 @@ header h1 {
     border-top: 4px solid #4facfe;
 }
 
+.financial-planning-card {
+    border-top: 4px solid #43e97b;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     header h1 {
