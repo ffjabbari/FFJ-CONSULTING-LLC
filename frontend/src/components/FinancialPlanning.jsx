@@ -104,6 +104,7 @@ function downloadTextFile(filename, content) {
 function FinancialPlanning() {
   const navigate = useNavigate()
   const fileInputRef = useRef(null)
+  const tableWrapRef = useRef(null)
 
   const [state, setState] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
@@ -198,13 +199,42 @@ function FinancialPlanning() {
     })
   }
 
-  const updateRow = (idx, patch) => {
-    setRowsForActive(rows.map((r, i) => (i === idx ? { ...r, ...patch } : r)))
+  const mutateActiveRows = (mutator) => {
+    setState((prev) => {
+      const currentRows = prev.portfolios?.[prev.active] || [newRow()]
+      const nextRows = mutator(currentRows)
+      const next = {
+        ...prev,
+        portfolios: {
+          ...(prev.portfolios || {}),
+          [prev.active]: nextRows,
+        },
+      }
+      persist(next)
+      return next
+    })
   }
 
-  const addRow = () => setRowsForActive([...rows, newRow()])
-  const removeRow = (idx) =>
-    setRowsForActive(rows.filter((_, i) => i !== idx).length ? rows.filter((_, i) => i !== idx) : [newRow()])
+  const updateRow = (idx, patch) => {
+    mutateActiveRows((current) => current.map((r, i) => (i === idx ? { ...r, ...patch } : r)))
+  }
+
+  const addRow = () => {
+    setStatus('')
+    mutateActiveRows((current) => [...current, newRow()])
+    setStatus('Added position.')
+    setTimeout(() => {
+      tableWrapRef.current?.scrollTo({ top: tableWrapRef.current.scrollHeight, behavior: 'smooth' })
+    }, 0)
+  }
+
+  const removeRow = (idx) => {
+    setStatus('')
+    mutateActiveRows((current) => {
+      const next = current.filter((_, i) => i !== idx)
+      return next.length ? next : [newRow()]
+    })
+  }
 
   const setActive = (name) => {
     setState((prev) => {
@@ -341,26 +371,26 @@ function FinancialPlanning() {
               onChange={(e) => setNewPortfolioName(e.target.value)}
               placeholder="New portfolio name"
             />
-            <button className="fp-btn fp-btn-secondary" onClick={createPortfolio}>
+            <button type="button" className="fp-btn fp-btn-secondary" onClick={createPortfolio}>
               Create
             </button>
-            <button className="fp-btn fp-btn-ghost" onClick={deleteActivePortfolio}>
+            <button type="button" className="fp-btn fp-btn-ghost" onClick={deleteActivePortfolio}>
               Delete
             </button>
           </div>
         </div>
 
         <div className="fp-actions">
-          <button className="fp-btn" onClick={addRow}>
+          <button type="button" className="fp-btn" onClick={addRow}>
             Add position
           </button>
-          <button className="fp-btn fp-btn-secondary" onClick={exportCsv}>
+          <button type="button" className="fp-btn fp-btn-secondary" onClick={exportCsv}>
             Export CSV
           </button>
-          <button className="fp-btn fp-btn-ghost" onClick={loadExample}>
+          <button type="button" className="fp-btn fp-btn-ghost" onClick={loadExample}>
             Load example
           </button>
-          <button className="fp-btn fp-btn-ghost" onClick={reset}>
+          <button type="button" className="fp-btn fp-btn-ghost" onClick={reset}>
             Reset
           </button>
           <div className="fp-status">
@@ -377,10 +407,10 @@ function FinancialPlanning() {
           <div className="fp-import-header">
             <h2>Import (CSV)</h2>
             <div className="fp-import-actions">
-              <button className="fp-btn fp-btn-secondary" onClick={importCsv}>
+              <button type="button" className="fp-btn fp-btn-secondary" onClick={importCsv}>
                 Import CSV
               </button>
-              <button className="fp-btn fp-btn-ghost" onClick={() => fileInputRef.current?.click()}>
+              <button type="button" className="fp-btn fp-btn-ghost" onClick={() => fileInputRef.current?.click()}>
                 Choose file…
               </button>
               <input
@@ -440,7 +470,7 @@ function FinancialPlanning() {
           )}
         </div>
 
-        <div className="fp-table-wrap">
+        <div className="fp-table-wrap" ref={tableWrapRef}>
           <table className="fp-table">
             <thead>
               <tr>
@@ -495,7 +525,7 @@ function FinancialPlanning() {
                   <td className={`fp-num ${r.gain >= 0 ? 'fp-pos' : 'fp-neg'}`}>{formatMoney(r.gain)}</td>
                   <td className={`fp-num ${r.gainPct >= 0 ? 'fp-pos' : 'fp-neg'}`}>{formatPercent(r.gainPct)}</td>
                   <td className="fp-actions-cell">
-                    <button className="fp-remove" onClick={() => removeRow(idx)} title="Remove row">
+                    <button type="button" className="fp-remove" onClick={() => removeRow(idx)} title="Remove row">
                       Remove
                     </button>
                   </td>
