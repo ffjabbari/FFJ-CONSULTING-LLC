@@ -1,0 +1,159 @@
+.fp-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding-top: 80px;
+}
+
+.fp-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.fp-header h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2.2rem;
+  color: #0a0e27;
+}
+
+.fp-header p {
+  margin: 0 0 1.25rem 0;
+  color: #555;
+  line-height: 1.7;
+}
+
+.fp-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.25rem;
+}
+
+.fp-btn {
+  background: #0a0e27;
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.fp-btn:hover {
+  opacity: 0.95;
+}
+
+.fp-btn-secondary {
+  background: #667eea;
+}
+
+.fp-btn-ghost {
+  background: #f0f0f0;
+  color: #0a0e27;
+}
+
+.fp-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.fp-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.fp-table th,
+.fp-table td {
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.fp-table thead th {
+  background: #fbfbfd;
+  color: #0a0e27;
+  font-weight: 900;
+}
+
+.fp-table input {
+  width: 100%;
+  padding: 0.65rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  outline: none;
+  background: white;
+}
+
+.fp-num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.fp-actions-cell {
+  text-align: right;
+}
+
+.fp-remove {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.fp-remove:hover {
+  border-color: #f87171;
+  background: #fff5f5;
+}
+
+.fp-total-label {
+  font-weight: 900;
+  color: #0a0e27;
+}
+
+.fp-total {
+  font-weight: 900;
+}
+
+.fp-pos {
+  color: #166534;
+}
+
+.fp-neg {
+  color: #991b1b;
+}
+
+.fp-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid #0a0e27;
+  background: #f5f7ff;
+  border-radius: 6px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .fp-page {
+    padding-top: 70px;
+  }
+
+  .fp-container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .fp-header h1 {
+    font-size: 1.6rem;
+  }
+}
+
