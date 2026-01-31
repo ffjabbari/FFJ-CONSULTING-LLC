@@ -15,7 +15,12 @@ function safeParseJson(value, fallback) {
 }
 
 function toNumber(value) {
-  const n = Number(String(value ?? '').replace(/,/g, '').trim())
+  // Allow common formats: "$1,234.56" / "1,234.56" / " 123 "
+  const cleaned = String(value ?? '')
+    .replace(/,/g, '')
+    .replace(/[^0-9.\-]/g, '')
+    .trim()
+  const n = Number(cleaned)
   return Number.isFinite(n) ? n : 0
 }
 
@@ -256,6 +261,16 @@ function FinancialPlanning() {
     setStatus('Exported CSV.')
   }
 
+  const loadExample = () => {
+    const example = [
+      { ticker: 'AAPL', shares: '10', costBasis: '150', currentPrice: '185' },
+      { ticker: 'MSFT', shares: '6', costBasis: '320', currentPrice: '395' },
+      { ticker: 'AMZN', shares: '8', costBasis: '120', currentPrice: '155' },
+    ]
+    setRowsForActive(example)
+    setStatus('Loaded example portfolio.')
+  }
+
   const importCsv = () => {
     const parsed = parseCsvToRows(importText)
     if (!parsed.length) {
@@ -303,6 +318,11 @@ function FinancialPlanning() {
           </p>
         </header>
 
+        <div className="fp-help">
+          Enter <strong>Shares</strong>, <strong>Cost basis</strong>, and <strong>Current price</strong> to see calculations
+          update instantly. This version does not fetch live quotes yet (manual/delayed data is fine).
+        </div>
+
         <div className="fp-portfolio-bar">
           <label className="fp-field">
             <span>Portfolio</span>
@@ -336,6 +356,9 @@ function FinancialPlanning() {
           </button>
           <button className="fp-btn fp-btn-secondary" onClick={exportCsv}>
             Export CSV
+          </button>
+          <button className="fp-btn fp-btn-ghost" onClick={loadExample}>
+            Load example
           </button>
           <button className="fp-btn fp-btn-ghost" onClick={reset}>
             Reset
@@ -448,6 +471,7 @@ function FinancialPlanning() {
                       value={rows[idx].shares}
                       onChange={(e) => updateRow(idx, { shares: e.target.value })}
                       className={r.shares <= 0 ? 'fp-invalid' : ''}
+                      placeholder="e.g. 10"
                     />
                   </td>
                   <td>

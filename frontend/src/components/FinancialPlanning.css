@@ -27,6 +27,15 @@
   line-height: 1.7;
 }
 
+.fp-help {
+  border-left: 4px solid #667eea;
+  background: #f5f7ff;
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  color: #333;
+  margin: 0.25rem 0 0.75rem;
+}
+
 .fp-actions {
   display: flex;
   gap: 0.75rem;
