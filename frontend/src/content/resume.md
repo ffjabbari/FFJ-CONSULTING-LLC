@@ -43,7 +43,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 ### FFJ Consulting LLC (Client: Fidelity) — St. Louis, MO
 **Enterprise Cloud Architect / Principal Engineer** | Apr 2022 – Present
 
-- Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Java, Spring Boot, and Python.
+- Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Go, TypeScript, and Terraform.
 - Built GenAI-assisted workflows for code generation, refactoring, testing, documentation, and operational automation.
 - Designed "human-in-the-loop" engineering automation where AI proposes changes and developers review/approve in PR workflows.
 - Hands-on with enterprise GenAI tooling including Amazon Bedrock, Amazon Bedrock Data Automation (BDA), Amazon Q, Kiro, Cursor, Copilot, and ChatGPT.
@@ -60,45 +60,45 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 ### FFJ Consulting LLC (Client: Nike) — St. Louis, MO
 **Enterprise Cloud Architect / Senior Developer** | Nov 2019 – Apr 2022
 
-- Delivered AWS modernization solutions using Java, Spring Boot, Python, EKS, Kubernetes, API Gateway, Lambda, SQS, and EventBridge; built containerized and serverless components.
+- Delivered AWS modernization solutions using Node.js, API Gateway, Lambda, SQS, and EventBridge; built containerized and serverless components with EKS and Kubernetes.
 - Implemented secure authentication/authorization patterns, Apigee/API Gateway policies, and API security best practices.
 - Supported enterprise workflows through microservices, RabbitMQ/event-driven processing, and scalable integrations; used Jenkins and SonarQube in CI/CD; deployed services with Docker/Kubernetes; integrated PostgreSQL, MongoDB, and Redis/ElastiCache for persistence and caching.
 
 ### Connectria — St. Louis, MO
 **Senior Full-Stack Developer / Cloud Architect** | Jan 2018 – Jan 2019
 
-- Architected and built cloud-native applications on AWS and Azure using Java, Spring Boot, Python, Kubernetes, API Gateway, SQS, and RabbitMQ in microservices patterns.
+- Architected and built cloud-native applications on AWS and Azure using C#/.NET Core, Azure, Kubernetes, API Gateway, SQS, and RabbitMQ in microservices patterns.
 - Delivered Kubernetes-based platforms with Terraform/CloudFormation IaC and Jenkins CI/CD for repeatable deployment pipelines; integrated SonarQube for code quality.
-- Developed full-stack solutions using modern UI frameworks and backend services across Java, Python, and Node.js; used Docker/Kubernetes for deployment; PostgreSQL, MongoDB, and Redis for data and caching.
+- Developed full-stack solutions using modern UI frameworks and backend services across .NET, Node.js, and PostgreSQL; used Docker/Kubernetes for deployment; MongoDB and Redis for data and caching.
 
 ### American Fork / Park City, UT
 **Senior Full-Stack Developer / Cloud-Native Engineer** | Jan 2017 – Jan 2018
 
-- Designed and built cloud-native microservices in Java, Spring Boot, and Python supporting high availability and distributed workloads on AWS (EKS, SQS, API Gateway).
+- Designed and built cloud-native microservices in Go, Redis, and EKS supporting high availability and distributed workloads on AWS (SQS, API Gateway).
 - Implemented Kubernetes/Rancher deployments, Karpenter-style scaling, and service configuration/discovery patterns.
-- Delivered secure and scalable services using Spring Boot, RabbitMQ, and event-driven architectures; used Jenkins and SonarQube in CI/CD; Docker/Kubernetes; PostgreSQL and Redis for data and caching.
+- Delivered secure and scalable services using RabbitMQ and event-driven architectures; used Jenkins and SonarQube in CI/CD; Docker/Kubernetes; PostgreSQL and Redis for data and caching.
 
 ### Earlier Career (Selected)
 
-*Technologies across these roles: Java, Spring Boot, Python, C#/.NET, AWS, Azure, Docker, Kubernetes, EKS, PostgreSQL, MongoDB, NoSQL, Redis, ElastiCache, API Gateway, Apigee, SQS, RabbitMQ, EventBridge, Jenkins, SonarQube, Terraform, microservices, and enterprise integration.*
+*Technologies across these roles: C#/.NET, Java, Python, AWS, Azure, Docker, Kubernetes, EKS, PostgreSQL, MongoDB, Redis, API Gateway, Apigee, SQS, RabbitMQ, EventBridge, Jenkins, SonarQube, Terraform, microservices, and enterprise integration.*
 
-- **CDK Enterprises** — Senior Full-Stack Developer (Cloud Native / Kubernetes, Java, Spring Boot, AWS) | 2016 – 2017
-- **SAIC** — Senior Full-Stack Developer (Cloud Native / Kubernetes, Java, Python, AWS) | 2015 – 2016
+- **CDK Enterprises** — Senior Full-Stack Developer (Cloud Native / Kubernetes, Helm, AWS) | 2016 – 2017
+- **SAIC** — Senior Full-Stack Developer (Cloud Native / Kubernetes, Terraform, AWS) | 2015 – 2016
   - **General Healthcare Experience (Selected)**
-    - Led design of AWS-hosted CMS platforms (EKS, API Gateway, Lambda) with a focus on scalability and accessibility; Java, Spring Boot, Python.
+    - Led design of AWS-hosted CMS platforms (EKS, API Gateway, Lambda) with a focus on scalability and accessibility; C#/.NET, TypeScript, and PostgreSQL.
     - Defined modernization roadmaps integrating legacy systems with cloud-native services; partnered with stakeholders to drive alignment and adoption.
     - Implemented IdP/SSO integrations (Okta) for authentication and authorization to AWS-based services.
     - Delivered Infrastructure as Code using CloudFormation, Terraform, AWS CDK, and CDKTF; built POCs for automated AWS tagging with EventBridge.
     - Built CI/CD pipelines using GitHub Actions, Jenkins, SonarQube, Octopus, and env0 for AWS and on‑prem deployments.
     - Monitored and optimized systems using CloudWatch and Trusted Advisor to improve reliability and resource utilization.
     - Applied PII and accessibility guidelines; ensured compliance with HIPAA and MARS‑E and AWS security best practices (IAM, VPC, encryption).
-- **Spectrum Health** — Senior Full-Stack Developer (Microservices, Java, Spring Boot, AWS, Kubernetes, RabbitMQ) | 2013 – 2015
-- **US Bank** — Senior Full-Stack Developer / Architect (Microservices, Java, API Gateway, event-driven) | 2012 – 2013
-- **General Electric (Mayo Clinic IoT)** — Senior Developer (IoT, Java, Python, AWS, Azure, enterprise integration) | 2009 – 2012
-- **Boeing** — Senior Developer (Spring Boot, Java, enterprise platforms, messaging) | 2007 – 2009
-- **American Family** — Senior Developer (Java, .NET, APIs, integration) | 2005 – 2007
-- **Express Scripts** — Senior Developer (Java, enterprise systems, APIs) | 2003 – 2005
-- **Southwestern Bell** — Developer (Java, C#, enterprise development) | 2000 – 2003
+- **Spectrum Health** — Senior Full-Stack Developer (Microservices, RabbitMQ, Kubernetes, AWS) | 2013 – 2015
+- **US Bank** — Senior Full-Stack Developer / Architect (Microservices, API Gateway, event-driven) | 2012 – 2013
+- **General Electric (Mayo Clinic IoT)** — Senior Developer (IoT, C#, Azure, AWS, enterprise integration) | 2009 – 2012
+- **Boeing** — Senior Developer (Java, Spring Boot, enterprise platforms, messaging) | 2007 – 2009
+- **American Family** — Senior Developer (.NET, C#, APIs, integration) | 2005 – 2007
+- **Express Scripts** — Senior Developer (C#, SQL Server, enterprise integration) | 2003 – 2005
+- **Southwestern Bell** — Developer (C#, Java, enterprise development) | 2000 – 2003
 
 ---
 
