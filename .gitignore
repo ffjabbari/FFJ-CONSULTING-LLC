@@ -47,3 +47,7 @@ yarn-error.log*
 
 # Generated resume artifacts
 *_updated.docx
+Fred_Jabbari_Resume_synced_from_website.docx
+
+# Backend publish output
+backend/**/publish/

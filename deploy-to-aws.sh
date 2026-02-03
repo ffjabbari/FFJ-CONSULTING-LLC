@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # AWS Deployment Script for FFJ Consulting LLC
-# This script automates the deployment process to AWS
+# Uses AWS profile: my-sso (hardcoded below)
 
 set -e
 
 echo "=========================================="
 echo "FFJ Consulting LLC - AWS Deployment"
+echo "Profile: my-sso"
 echo "=========================================="
 echo ""
 
@@ -14,6 +15,9 @@ echo ""
 S3_BUCKET_NAME="ffj-consulting-website"
 AWS_REGION="us-east-1"
 BACKEND_APP_NAME="ffj-consulting-api"
+# AWS profile (hardcoded so deploy works every time; edit here to change)
+AWS_PROFILE="my-sso"
+AWS_CMD="aws --profile ${AWS_PROFILE}"
 
 # Colors for output
 RED='\033[0;31m'
@@ -66,9 +70,9 @@ echo ""
 echo "Step 2: Setting up S3 bucket..."
 cd ..
 
-if aws s3 ls "s3://${S3_BUCKET_NAME}" 2>&1 | grep -q 'NoSuchBucket'; then
+if $AWS_CMD s3 ls "s3://${S3_BUCKET_NAME}" 2>&1 | grep -q 'NoSuchBucket'; then
     echo "Creating S3 bucket..."
-    aws s3 mb "s3://${S3_BUCKET_NAME}" --region "${AWS_REGION}"
+    $AWS_CMD s3 mb "s3://${S3_BUCKET_NAME}" --region "${AWS_REGION}"
     echo -e "${GREEN}✅ S3 bucket created${NC}"
 else
     echo -e "${YELLOW}⚠️  S3 bucket already exists${NC}"
@@ -76,10 +80,16 @@ fi
 
 # Step 3: Upload Frontend to S3
 echo "Step 3: Uploading frontend to S3..."
-aws s3 sync frontend/dist/ "s3://${S3_BUCKET_NAME}" --delete --region "${AWS_REGION}"
+if ! $AWS_CMD s3 sync frontend/dist/ "s3://${S3_BUCKET_NAME}" --delete --region "${AWS_REGION}"; then
+    echo -e "${RED}❌ S3 upload failed (often AccessDenied).${NC}"
+    echo "  Check: (1) AWS identity: aws sts get-caller-identity"
+    echo "  (2) Bucket owner: $AWS_CMD s3api get-bucket-acl --bucket ${S3_BUCKET_NAME}"
+    echo "  (3) Edit AWS_PROFILE at the top of this script if you use a different profile."
+    exit 1
+fi
 
 # Enable static website hosting
-aws s3 website "s3://${S3_BUCKET_NAME}" \
+$AWS_CMD s3 website "s3://${S3_BUCKET_NAME}" \
     --index-document index.html \
     --error-document index.html \
     --region "${AWS_REGION}"
@@ -100,7 +110,7 @@ cat > /tmp/bucket-policy.json <<EOF
 }
 EOF
 
-aws s3api put-bucket-policy \
+$AWS_CMD s3api put-bucket-policy \
     --bucket "${S3_BUCKET_NAME}" \
     --policy file:///tmp/bucket-policy.json \
     --region "${AWS_REGION}"

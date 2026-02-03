@@ -27,6 +27,13 @@
   line-height: 1.7;
 }
 
+.fp-build {
+  margin: -0.5rem 0 1rem 0;
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 700;
+}
+
 .fp-help {
   border-left: 4px solid #667eea;
   background: #f5f7ff;

@@ -5,6 +5,7 @@ import Footer from './Footer'
 import './FinancialPlanning.css'
 
 const STORAGE_KEY = 'ffj.financialPlanning.portfolios.v1'
+const FP_BUILD = 'fp-parser-2026-01-31-2'
 
 function safeParseJson(value, fallback) {
   try {
@@ -45,7 +46,20 @@ function newRow() {
 }
 
 function normalizeTicker(t) {
-  return String(t || '').trim().toUpperCase()
+  return String(t || '')
+    .trim()
+    .toUpperCase()
+    .replace(/[^A-Z0-9.\-]/g, '')
+}
+
+function isLikelyTicker(t) {
+  const s = normalizeTicker(t)
+  // Keep it conservative to avoid false positives from pasted UI text.
+  // Covers: GOOG, GOOGL, FXAIX, BRK.B, RDS-A (rare), etc.
+  const tickerRegex = /^[A-Z]{2,6}([.\-][A-Z0-9]{1,2})?$/
+  if (!s) return false
+  if (s.length > 9) return false
+  return tickerRegex.test(s)
 }
 
 function parseCsvToRows(csvText) {
@@ -75,6 +89,178 @@ function parseCsvToRows(csvText) {
   }
 
   return rows
+}
+
+function splitLooseLine(line) {
+  const l = String(line || '')
+  if (l.includes('\t')) return l.split('\t').map((p) => p.trim())
+  // Many brokerage UIs copy as fixed-width columns (2+ spaces)
+  return l.split(/\s{2,}/).map((p) => p.trim())
+}
+
+function findColIndex(headers, candidates) {
+  const hs = headers.map((h) => String(h || '').toLowerCase().trim())
+  for (const cand of candidates) {
+    const c = cand.toLowerCase()
+    const idx = hs.findIndex((h) => h === c || h.includes(c))
+    if (idx >= 0) return idx
+  }
+  return -1
+}
+
+function looksLikeHeaderRow(cells) {
+  const joined = cells.join(' ').toLowerCase()
+  return (
+    joined.includes('symbol') ||
+    joined.includes('ticker') ||
+    joined.includes('quantity') ||
+    joined.includes('shares') ||
+    joined.includes('price') ||
+    joined.includes('last') ||
+    joined.includes('cost') ||
+    joined.includes('basis')
+  )
+}
+
+function extractTickersFromText(pasteText) {
+  const text = String(pasteText || '')
+  const lines = text.split(/\r?\n/)
+
+  const stop = new Set([
+    'CASH',
+    'ACCOUNT',
+    'TOTAL',
+    'GRAND',
+    'LOW',
+    'HIGH',
+    'NOT',
+    'PRICED',
+    'TODAY',
+    'AS',
+    'OF',
+    'ET',
+    'REFRESH',
+    'POSITIONS',
+    'SEARCH',
+    'FILTER',
+    'AVAILABLE',
+    'ACTIONS',
+    'MANAGE',
+    'DIVIDENDS',
+    'FULL',
+    'VIEW',
+    'POSITION',
+    'INFORMATION',
+    'LAST',
+    'UPDATED',
+    'MONEY',
+    'MARKET',
+    'HELD',
+    'IN',
+  ])
+
+  const found = []
+  for (const line of lines) {
+    const s = line.trim().toUpperCase()
+    if (!s) continue
+    if (s.length > 12) continue
+    if (!isLikelyTicker(s)) continue
+    if (stop.has(s)) continue
+    found.push(s)
+  }
+
+  return Array.from(new Set(found))
+}
+
+function parseFidelityPasteToRows(pasteText) {
+  const text = String(pasteText || '').trim()
+  if (!text) return []
+
+  const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean)
+  if (!lines.length) return []
+
+  // If it's not tabular (no tabs and no fixed-width multi-column lines),
+  // don't try to "column-parse" each line — just extract tickers.
+  const hasTabularSignals =
+    text.includes('\t') || lines.some((l) => splitLooseLine(l).length >= 3)
+  if (!hasTabularSignals) {
+    const tickers = extractTickersFromText(text)
+    return tickers.map((t) => ({ ticker: t, shares: '', costBasis: '', currentPrice: '' }))
+  }
+
+  const firstCells = splitLooseLine(lines[0])
+  const hasHeader = looksLikeHeaderRow(firstCells)
+
+  const headers = hasHeader ? firstCells : []
+  const dataLines = hasHeader ? lines.slice(1) : lines
+
+  // Map columns by common Fidelity labels (best-effort)
+  const symbolIdx = hasHeader
+    ? findColIndex(headers, ['symbol', 'ticker'])
+    : 0
+  const sharesIdx = hasHeader
+    ? findColIndex(headers, ['quantity', 'qty', 'shares'])
+    : 1
+  const priceIdx = hasHeader
+    ? findColIndex(headers, ['last price', 'last', 'price', 'current price', 'market price'])
+    : 2
+  const costBasisIdx = hasHeader
+    ? findColIndex(headers, ['cost basis', 'basis', 'avg cost', 'average cost'])
+    : -1
+
+  const rows = []
+
+  for (const line of dataLines) {
+    const parts = splitLooseLine(line)
+    if (!parts.length) continue
+
+    const rawSymbol = parts[symbolIdx] ?? parts[0] ?? ''
+    const ticker = normalizeTicker(rawSymbol)
+    if (!isLikelyTicker(ticker)) continue
+
+    // Try to read in any order; fall back to searching numeric-like tokens
+    const shares = parts[sharesIdx] ?? ''
+    const currentPrice = parts[priceIdx] ?? ''
+    const costBasis = costBasisIdx >= 0 ? (parts[costBasisIdx] ?? '') : ''
+
+    // If we didn't really find a price column, try to find the first "$" token after shares.
+    let inferredPrice = currentPrice
+    if (!toNumber(inferredPrice)) {
+      const candidate = parts.find((p) => String(p).includes('$')) || ''
+      if (toNumber(candidate)) inferredPrice = candidate
+    }
+
+    // Safety: avoid importing random page/UI text as a "holding".
+    // If the row doesn't contain ANY numeric values (shares/price/cost), skip it.
+    // Users who only have symbols can use "Import Symbols Only".
+    const hasAnyNumeric =
+      toNumber(shares) > 0 || toNumber(inferredPrice) > 0 || toNumber(costBasis) > 0
+    if (!hasAnyNumeric) continue
+
+    rows.push({
+      ticker,
+      shares: String(shares ?? '').trim(),
+      costBasis: String(costBasis ?? '').trim(),
+      currentPrice: String(inferredPrice ?? '').trim(),
+    })
+  }
+
+  // Fallback: if we couldn't parse tabular data, at least extract tickers so users can start.
+  if (rows.length === 0) {
+    const tickers = extractTickersFromText(text)
+    return tickers.map((t) => ({ ticker: t, shares: '', costBasis: '', currentPrice: '' }))
+  }
+
+  // De-dupe by ticker (keep first occurrence)
+  const seen = new Set()
+  const deduped = []
+  for (const r of rows) {
+    if (!r?.ticker) continue
+    if (seen.has(r.ticker)) continue
+    seen.add(r.ticker)
+    deduped.push(r)
+  }
+  return deduped
 }
 
 function rowsToCsv(rows) {
@@ -122,6 +308,7 @@ function FinancialPlanning() {
   const [newPortfolioName, setNewPortfolioName] = useState('')
   const [status, setStatus] = useState('')
   const [importText, setImportText] = useState('')
+  const [pasteText, setPasteText] = useState('')
 
   const rows = state.portfolios?.[state.active] || [newRow()]
 
@@ -301,6 +488,34 @@ function FinancialPlanning() {
     setStatus('Loaded example portfolio.')
   }
 
+  const importFidelityPaste = () => {
+    const parsed = parseFidelityPasteToRows(pasteText)
+    if (!parsed.length) {
+      setStatus('No rows found. Try copying the holdings table again.')
+      return
+    }
+    setRowsForActive(parsed)
+    setPasteText('')
+    const filled = parsed.filter((r) => toNumber(r.shares) > 0 && toNumber(r.currentPrice) > 0).length
+    if (filled === 0) {
+      setStatus(`Imported ${parsed.length} tickers. Add shares/prices (or use CSV) to compute totals.`)
+    } else {
+      setStatus(`Imported ${parsed.length} rows from pasted holdings.`)
+    }
+  }
+
+  const importFidelitySymbolsOnly = () => {
+    const tickers = extractTickersFromText(pasteText)
+    if (!tickers.length) {
+      setStatus('No tickers found in the pasted text.')
+      return
+    }
+    const parsed = tickers.map((t) => ({ ticker: t, shares: '', costBasis: '', currentPrice: '' }))
+    setRowsForActive(parsed)
+    setPasteText('')
+    setStatus(`Imported ${parsed.length} tickers (symbols only).`)
+  }
+
   const importCsv = () => {
     const parsed = parseCsvToRows(importText)
     if (!parsed.length) {
@@ -342,6 +557,7 @@ function FinancialPlanning() {
 
         <header className="fp-header">
           <h1>Financial Planning</h1>
+          <div className="fp-build">Build: {FP_BUILD}</div>
           <p>
             Portfolio Analysis (delayed/manual friendly). Enter positions and prices to compute allocations and
             gain/loss. We can add delayed quote lookups later.
@@ -400,6 +616,30 @@ function FinancialPlanning() {
               <span className="fp-ok">No warnings</span>
             )}
             {status ? <span className="fp-status-msg">{status}</span> : null}
+          </div>
+        </div>
+
+        <div className="fp-import">
+          <div className="fp-import-header">
+            <h2>Paste from Fidelity (Holdings)</h2>
+            <div className="fp-import-actions">
+              <button type="button" className="fp-btn fp-btn-secondary" onClick={importFidelityPaste}>
+                Import Paste
+              </button>
+              <button type="button" className="fp-btn fp-btn-ghost" onClick={importFidelitySymbolsOnly}>
+                Import Symbols Only
+              </button>
+            </div>
+          </div>
+          <textarea
+            value={pasteText}
+            onChange={(e) => setPasteText(e.target.value)}
+            placeholder="Copy your Fidelity holdings table and paste here…"
+            rows={4}
+          />
+          <div className="fp-import-help">
+            Tip: Copy the holdings table (it may paste as tab-separated text). We’ll extract ticker, shares, and price when possible. If the paste
+            only contains tickers (no quantities/prices), use “Import Symbols Only” and fill in shares/prices later or import a CSV export.
           </div>
         </div>
 
