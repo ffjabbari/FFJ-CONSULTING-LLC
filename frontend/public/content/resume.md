@@ -113,7 +113,8 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 
 ## EDUCATION
 
-- M.S. Computer Science
+Washington University in St. Louis, Missouri  
+- M.S. Computer Science  
 - M.S. Artificial Intelligence
 
 ---
