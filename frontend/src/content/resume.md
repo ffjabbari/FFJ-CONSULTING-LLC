@@ -24,7 +24,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 
 **Data & persistence:** PostgreSQL, MongoDB, NoSQL, Redis, ElastiCache
 
-**DevOps & CI/CD:** Jenkins, GitHub Actions, SonarQube, Terraform, CloudFormation, AWS CDK, CDKTF, Octopus, env0
+**DevOps & CI/CD:** Jenkins, GitHub Actions, Bitbucket, SonarQube, Terraform, CloudFormation, AWS CDK, CDKTF, Octopus, env0
 
 **Integration & Messaging:** Apigee, API Gateway, SQS, RabbitMQ, EventBridge, REST APIs, event-driven architecture
 
@@ -43,7 +43,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 ### FFJ Consulting LLC (Client: Fidelity) — St. Louis, MO
 **Enterprise Cloud Architect / Principal Engineer** | Apr 2022 – Present
 
-- Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Python, Java, and Spring Boot.
+- Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Python, Java, Spring Boot, .NET, C#, Terraform, CDK, EventBridge, ElastiCache, Kubernetes, Bitbucket, and GitHub Actions.
 - Built GenAI-assisted workflows for code generation, refactoring, testing, documentation, and operational automation.
 - Designed "human-in-the-loop" engineering automation where AI proposes changes and developers review/approve in PR workflows.
 - Hands-on with enterprise GenAI tooling including Amazon Bedrock, Amazon Bedrock Data Automation (BDA), Amazon Q, Kiro, Cursor, Copilot, and ChatGPT.
@@ -53,16 +53,16 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 - Defined modernization roadmaps integrating legacy systems with cloud-native services; partnered with stakeholders to drive alignment and adoption.
 - Implemented IdP/SSO integrations (Okta) for authentication and authorization to AWS-based services.
 - Delivered Infrastructure as Code using CloudFormation, Terraform, AWS CDK, and CDKTF; built POCs for automated AWS tagging with EventBridge.
-- Built CI/CD pipelines using GitHub Actions, Jenkins, SonarQube, Octopus, and env0 for AWS and on‑prem deployments.
+- Built CI/CD pipelines using GitHub Actions, Bitbucket, Jenkins, SonarQube, Octopus, and env0 for AWS and on‑prem deployments.
 - Monitored and optimized systems using CloudWatch and Trusted Advisor to improve reliability and resource utilization.
 - Applied PII and accessibility guidelines; implemented AWS security best practices (IAM, VPC, encryption) in regulated environments; used PostgreSQL, MongoDB, Redis/ElastiCache for data and caching layers in containerized (Docker/Kubernetes) services.
 
 ### FFJ Consulting LLC (Client: Nike) — St. Louis, MO
 **Enterprise Cloud Architect / Senior Developer** | Nov 2019 – Apr 2022
 
-- Delivered AWS modernization solutions using Python, Java, and Spring Boot with API Gateway, Lambda, SQS, and EventBridge; built containerized and serverless components with EKS and Kubernetes.
+- Delivered AWS modernization solutions using Python, Java, Spring Boot, .NET, C#, Terraform, CDK, EventBridge, Lambda, API Gateway, ElastiCache, EKS, Kubernetes, Bitbucket, and GitHub Actions; built containerized and serverless components.
 - Implemented secure authentication/authorization patterns, Apigee/API Gateway policies, and API security best practices.
-- Supported enterprise workflows through microservices, RabbitMQ/event-driven processing, and scalable integrations; used Jenkins and SonarQube in CI/CD; deployed services with Docker/Kubernetes; integrated PostgreSQL, MongoDB, and Redis/ElastiCache for persistence and caching.
+- Supported enterprise workflows through microservices, RabbitMQ/event-driven processing, and scalable integrations; used Jenkins, Bitbucket, and SonarQube in CI/CD; deployed services with Docker/Kubernetes; integrated PostgreSQL, MongoDB, and Redis/ElastiCache for persistence and caching.
 
 ### Connectria — St. Louis, MO
 **Senior Full-Stack Developer / Cloud Architect** | Jan 2018 – Jan 2019
@@ -80,7 +80,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 
 ### Earlier Career (Selected)
 
-*Technologies across these roles: C#/.NET, Java, Python, AWS, Azure, Docker, Kubernetes, EKS, PostgreSQL, MongoDB, Redis, API Gateway, Apigee, SQS, RabbitMQ, EventBridge, Jenkins, SonarQube, Terraform, microservices, and enterprise integration.*
+*Technologies across these roles: C#/.NET, Java, Python, AWS, Azure, Docker, Kubernetes, EKS, PostgreSQL, MongoDB, Redis, ElastiCache, API Gateway, Apigee, SQS, RabbitMQ, EventBridge, Lambda, Terraform, CDK, Jenkins, GitHub Actions, Bitbucket, SonarQube, microservices, and enterprise integration.*
 
 - **CDK Enterprises** — Senior Full-Stack Developer (Cloud Native / Kubernetes, Helm, AWS) | 2016 – 2017
 - **SAIC** — Senior Full-Stack Developer (Cloud Native / Kubernetes, Terraform, AWS) | 2015 – 2016
@@ -89,7 +89,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
     - Defined modernization roadmaps integrating legacy systems with cloud-native services; partnered with stakeholders to drive alignment and adoption.
     - Implemented IdP/SSO integrations (Okta) for authentication and authorization to AWS-based services.
     - Delivered Infrastructure as Code using CloudFormation, Terraform, AWS CDK, and CDKTF; built POCs for automated AWS tagging with EventBridge.
-    - Built CI/CD pipelines using GitHub Actions, Jenkins, SonarQube, Octopus, and env0 for AWS and on‑prem deployments.
+    - Built CI/CD pipelines using GitHub Actions, Bitbucket, Jenkins, SonarQube, Octopus, and env0 for AWS and on‑prem deployments.
     - Monitored and optimized systems using CloudWatch and Trusted Advisor to improve reliability and resource utilization.
     - Applied PII and accessibility guidelines; ensured compliance with HIPAA and MARS‑E and AWS security best practices (IAM, VPC, encryption).
 - **Spectrum Health** — Senior Full-Stack Developer (Microservices, RabbitMQ, Kubernetes, AWS) | 2013 – 2015

@@ -15,6 +15,8 @@ echo ""
 S3_BUCKET_NAME="ffj-consulting-website"
 AWS_REGION="us-east-1"
 BACKEND_APP_NAME="ffj-consulting-api"
+# CloudFront distribution for ffjconsultingllc.com (optional; set empty to skip invalidation)
+CLOUDFRONT_DIST_ID="E3545N3N8YO2FZ"
 # AWS profile (hardcoded so deploy works every time; edit here to change)
 AWS_PROFILE="my-sso"
 AWS_CMD="aws --profile ${AWS_PROFILE}"
@@ -118,6 +120,21 @@ $AWS_CMD s3api put-bucket-policy \
 echo -e "${GREEN}✅ Frontend uploaded to S3${NC}"
 echo ""
 
+# Step 3b: Invalidate CloudFront cache (so ffjconsultingllc.com shows latest)
+if [ -n "${CLOUDFRONT_DIST_ID}" ]; then
+    echo "Invalidating CloudFront cache..."
+    if $AWS_CMD cloudfront create-invalidation \
+        --distribution-id "${CLOUDFRONT_DIST_ID}" \
+        --paths "/*" \
+        --query 'Invalidation.Id' \
+        --output text 2>/dev/null; then
+        echo -e "${GREEN}✅ CloudFront invalidation created (allow 1–5 min)${NC}"
+    else
+        echo -e "${YELLOW}⚠️  CloudFront invalidation skipped or failed${NC}"
+    fi
+    echo ""
+fi
+
 # Step 4: Build Backend
 echo "Step 4: Building backend..."
 cd backend/FFJConsulting.API
@@ -155,11 +172,8 @@ echo "=========================================="
 echo -e "${GREEN}Deployment Complete!${NC}"
 echo "=========================================="
 echo ""
-echo "Frontend URL: http://${S3_BUCKET_NAME}.s3-website-${AWS_REGION}.amazonaws.com"
+echo "Frontend: https://ffjconsultingllc.com"
+echo "  (S3 website: http://${S3_BUCKET_NAME}.s3-website-${AWS_REGION}.amazonaws.com)"
 echo ""
-echo "Next steps:"
-echo "  1. Set up CloudFront distribution for better performance"
-echo "  2. Configure custom domain (optional)"
-echo "  3. Set up SSL certificate via ACM"
-echo "  4. Update CORS settings in backend for CloudFront domain"
+echo "If the site is blank: wait 1–5 min for CloudFront invalidation, then hard refresh (Cmd+Shift+R)."
 echo ""
