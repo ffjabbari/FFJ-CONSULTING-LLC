@@ -43,7 +43,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 ### FFJ Consulting LLC (Client: Fidelity) — St. Louis, MO
 **Enterprise Cloud Architect / Principal Engineer** | Apr 2022 – Present
 
-- Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Go, TypeScript, and Terraform.
+- Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Python, Java, and Spring Boot.
 - Built GenAI-assisted workflows for code generation, refactoring, testing, documentation, and operational automation.
 - Designed "human-in-the-loop" engineering automation where AI proposes changes and developers review/approve in PR workflows.
 - Hands-on with enterprise GenAI tooling including Amazon Bedrock, Amazon Bedrock Data Automation (BDA), Amazon Q, Kiro, Cursor, Copilot, and ChatGPT.
@@ -60,7 +60,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 ### FFJ Consulting LLC (Client: Nike) — St. Louis, MO
 **Enterprise Cloud Architect / Senior Developer** | Nov 2019 – Apr 2022
 
-- Delivered AWS modernization solutions using Node.js, API Gateway, Lambda, SQS, and EventBridge; built containerized and serverless components with EKS and Kubernetes.
+- Delivered AWS modernization solutions using Python, Java, and Spring Boot with API Gateway, Lambda, SQS, and EventBridge; built containerized and serverless components with EKS and Kubernetes.
 - Implemented secure authentication/authorization patterns, Apigee/API Gateway policies, and API security best practices.
 - Supported enterprise workflows through microservices, RabbitMQ/event-driven processing, and scalable integrations; used Jenkins and SonarQube in CI/CD; deployed services with Docker/Kubernetes; integrated PostgreSQL, MongoDB, and Redis/ElastiCache for persistence and caching.
 

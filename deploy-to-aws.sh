@@ -122,6 +122,7 @@ echo ""
 echo "Step 4: Building backend..."
 cd backend/FFJConsulting.API
 
+rm -rf ./publish
 dotnet restore
 dotnet publish -c Release -o ./publish
 
