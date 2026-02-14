@@ -111,6 +111,15 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 
 ---
 
+## VOLUNTEER WORK AND MENTORING
+
+- Big Brothers Big Sisters of Eastern Missouri
+- Boys & Girls Clubs of Greater St. Louis
+- MERS Missouri Goodwill Industries
+- Catholic Charities of the Archdiocese of St. Louis
+
+---
+
 ## EDUCATION
 
 Washington University in St. Louis, Missouri  
