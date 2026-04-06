@@ -16,7 +16,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 
 ## KEY SKILLS
 
-**Languages:** Java, Spring Boot, Python, C#, .NET Core, Go, JavaScript/TypeScript, Svelte/SvelteKit, Node.js
+**Languages:** Java, Spring Boot, Python, C#, .NET Core, Go, TypeScript, JavaScript, Svelte/SvelteKit, Node.js
 
 **AWS & Cloud:** EKS, ECS, Lambda, API Gateway, S3, VPC, IAM, CloudWatch, CloudTrail, EventBridge, SQS, Karpenter, Textract, IDP; Azure
 
@@ -44,6 +44,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 **Enterprise Cloud Architect / Principal Engineer** | Apr 2022 – Present
 
 - Lead modernization of legacy enterprise systems into AWS cloud-native services (EKS, Lambda, API Gateway, SQS, EventBridge) and microservices using Python, Java, Spring Boot, .NET, C#, Terraform, CDK, EventBridge, ElastiCache, Kubernetes, Bitbucket, and GitHub Actions.
+- Used TypeScript and Svelte/SvelteKit on enterprise web and customer-facing initiatives as part of broader platform modernization and delivery.
 - Built GenAI-assisted workflows for code generation, refactoring, testing, documentation, and operational automation.
 - Designed "human-in-the-loop" engineering automation where AI proposes changes and developers review/approve in PR workflows.
 - Hands-on with enterprise GenAI tooling including Amazon Bedrock, Amazon Bedrock Data Automation (BDA), Amazon Q, Kiro, Cursor, Copilot, and ChatGPT.
@@ -65,6 +66,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 **Enterprise Cloud Architect / Senior Developer** | Nov 2019 – Apr 2022
 
 - Delivered AWS modernization solutions using Python, Java, Spring Boot, .NET, C#, Terraform, CDK, EventBridge, Lambda, API Gateway, ElastiCache, EKS, Kubernetes, Bitbucket, and GitHub Actions; built containerized and serverless components.
+- Used TypeScript and Svelte in project work for modern UI layers and integrations within the AWS modernization program.
 - Implemented secure authentication/authorization patterns, Apigee/API Gateway policies, and API security best practices.
 - Supported enterprise workflows through microservices, RabbitMQ/event-driven processing, and scalable integrations; used Jenkins, Bitbucket, and SonarQube in CI/CD; deployed services with Docker/Kubernetes; integrated PostgreSQL, MongoDB, and Redis/ElastiCache for persistence and caching.
 
@@ -72,6 +74,7 @@ Principal Cloud Architect and hands-on Senior Software Engineer with 25+ years o
 **Senior Full-Stack Developer / Cloud Architect** | Jan 2018 – Jan 2019
 
 - Architected and built cloud-native applications on AWS and Azure using C#/.NET Core, Azure, Kubernetes, API Gateway, SQS, and RabbitMQ in microservices patterns.
+- Used TypeScript and Svelte in full-stack delivery alongside .NET, Node.js, and cloud-native services.
 - Delivered Kubernetes-based platforms with Terraform/CloudFormation IaC and Jenkins CI/CD for repeatable deployment pipelines; integrated SonarQube for code quality.
 - Developed full-stack solutions using modern UI frameworks and backend services across .NET, Node.js, and PostgreSQL; used Docker/Kubernetes for deployment; MongoDB and Redis for data and caching.
 
