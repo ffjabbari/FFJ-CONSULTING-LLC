@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unpublished Work - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content h1 {
+            color: #9b59b6;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .content th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .content td {
+            padding: 11px 12px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
+
+        .callout {
+            background: #f8f9fa;
+            border-left: 4px solid #9b59b6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .callout-warning {
+            background: #fff8e6;
+            border-left: 4px solid #ff9f1c;
+        }
+
+        .callout-success {
+            background: #e8f8f5;
+            border-left: 4px solid #00b894;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #9b59b6;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+
+        <div class="content">
+            <span class="status-badge">NOT PUBLISHED ON WEBSITE</span>
+            <h1>Unpublished Work</h1>
+            <p>
+                This card documents <strong>Enhanced KIRO Framework</strong> documentation that lives in this
+                GitHub repository but is <em>not yet</em> deployed to the public website. It explains where the
+                content came from, how it was built, where it lives today, and exactly what is required to publish it.
+            </p>
+
+            <div class="callout callout-warning">
+                <h3>Current Status</h3>
+                <ul>
+                    <li><strong>Private GitHub repo:</strong> <code>FFJ-DocsPublic</code> (separate from this website repo)</li>
+                    <li><strong>Local path:</strong> <code>/Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic</code></li>
+                    <li><strong>In FFJ-CONSULTING-LLC repo:</strong> No — removed; kept private</li>
+                    <li><strong>On live website:</strong> No — not copied to <code>frontend/public/</code></li>
+                    <li><strong>Linked from site navigation:</strong> No</li>
+                </ul>
+            </div>
+
+            <h2>What is this work?</h2>
+            <p>
+                A curated, public-safe documentation set describing the <strong>Enhanced KIRO Framework</strong> —
+                an enterprise layer built on top of Amazon KIRO that connects AI-assisted development to JIRA, GitLab,
+                governance policies, and sprint context.
+            </p>
+            <p>The public draft consists of <strong>8 condensed HTML pages</strong> plus a portal landing page:</p>
+            <table>
+                <tr><th>Page</th><th>File</th><th>Audience</th></tr>
+                <tr><td>Portal</td><td><code>FFJ-DocsPublic/index.html</code></td><td>Everyone</td></tr>
+                <tr><td>Overview</td><td><code>01-overview.html</code></td><td>Everyone</td></tr>
+                <tr><td>Plain vs Enhanced</td><td><code>02-plain-vs-enhanced.html</code></td><td>Technical + business</td></tr>
+                <tr><td>Executive Summary</td><td><code>03-executive-summary.html</code></td><td>VPs, CTOs, hiring managers</td></tr>
+                <tr><td>Use Cases</td><td><code>04-use-cases.html</code></td><td>Team leads, architects</td></tr>
+                <tr><td>Architecture</td><td><code>05-architecture.html</code></td><td>Architects, senior engineers</td></tr>
+                <tr><td>Key Features</td><td><code>06-key-features.html</code></td><td>Technical evaluators</td></tr>
+                <tr><td>Developer Experience</td><td><code>07-developer-experience.html</code></td><td>Developers</td></tr>
+                <tr><td>Results &amp; Metrics</td><td><code>08-results-and-metrics.html</code></td><td>Everyone</td></tr>
+            </table>
+
+            <h2>Where did it come from?</h2>
+            <p>The source material is the internal documentation in a <strong>separate repository</strong>:</p>
+            <pre><code>/Users/fjabbari/REPO_AI/AwsKiro/Docs/</code></pre>
+            <p>That folder contains <strong>76 numbered HTML design cards</strong> (001–076) documenting the full AwsKiro / Enhanced KIRO system — architecture, merge engine, JIRA/GitLab integration, developer productivity, demos, and client rollout material.</p>
+
+            <div class="callout">
+                <h3>Three repos, three purposes</h3>
+                <table>
+                    <tr><th>Repository</th><th>Visibility</th><th>Content</th></tr>
+                    <tr>
+                        <td><strong>AwsKiro</strong><br><code>~/REPO_AI/AwsKiro</code></td>
+                        <td>Private</td>
+                        <td>Full internal archive (76 pages). Includes client-specific material.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FFJ-DocsPublic</strong><br><code>~/REPO_CURSOR/FFJ-DocsPublic</code></td>
+                        <td>Private</td>
+                        <td>Curated draft (8 pages). Sanitized. Ready for review, not on website.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FFJ-CONSULTING-LLC</strong><br><code>~/REPO_CURSOR/FFJ-CONSULTING-LLC</code></td>
+                        <td>Website repo</td>
+                        <td>Website code + this Unpublished Work card (pointer only).</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2>How we built it</h2>
+            <p>The work followed a deliberate curation process — not a blind copy of all 76 pages:</p>
+            <ol>
+                <li><strong>Reviewed all 76 cards</strong> in AwsKiro <code>Docs/</code> and identified public-safe vs client-internal content</li>
+                <li><strong>Excluded client material</strong> — rollout plans (070–076), sync ops (061), working docs (067), live proofs with real ticket IDs (045, 046, 054), AWS access inventory (071)</li>
+                <li><strong>Condensed</strong> the best material into 8 purpose-built pages instead of publishing 76 overwhelming cards</li>
+                <li><strong>Sanitized</strong> all examples — real JIRA IDs (e.g. SASDPO-7809) replaced with generic ones (PROJ-1234); team and client names removed</li>
+                <li><strong>Rebranded</strong> from "AwsKiro" to <strong>Enhanced KIRO Framework</strong> for the consulting site audience</li>
+                <li><strong>Moved</strong> to a dedicated private repo <code>FFJ-DocsPublic</code> (removed from FFJ-CONSULTING-LLC)</li>
+            </ol>
+
+            <h2>Where it lives today</h2>
+            <pre><code>FFJ-DocsPublic/                   ← Private repo (Enhanced KIRO docs)
+├── index.html
+├── 01-overview.html … 08-results-and-metrics.html
+├── styles.css
+├── README.md
+└── setup-github-private-repo.sh
+
+FFJ-CONSULTING-LLC/
+├── Docs/
+│   └── unpublished-work.html      ← This card (pointer only)
+└── frontend/public/docs/          ← Deployed website docs
+    └── (Enhanced KIRO not here yet)</code></pre>
+
+            <p><strong>Private GitHub:</strong> <code>https://github.com/ffjabbari/FFJ-DocsPublic</code> (private — only you and invited collaborators)</p>
+            <p><strong>Local clone:</strong> <code>/Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic</code></p>
+
+            <h3>Preview locally (without publishing)</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic
+python3 -m http.server 8080
+# Open http://localhost:8080</code></pre>
+
+            <h3>Create / push the private GitHub repo (one-time)</h3>
+            <pre><code>gh auth login
+cd /Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic
+./setup-github-private-repo.sh</code></pre>
+
+            <h2>What it takes to publish on the website</h2>
+            <p>Publishing means making the docs reachable at a URL like <code>https://ffjconsultingllc.com/docs/enhanced-kiro/</code>. Here are the steps:</p>
+
+            <h3>Step 1 — Copy docs to the deployable location</h3>
+            <p>The live site serves static files from <code>frontend/public/</code>. Copy the entire folder:</p>
+            <pre><code>cp -r /Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic/ \
+  /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC/frontend/public/docs/enhanced-kiro/</code></pre>
+
+            <h3>Step 2 — Add a card to the deployed docs portal</h3>
+            <p>Add an "Enhanced KIRO" card to <code>frontend/public/docs/index.html</code> (and keep <code>Docs/index.html</code> in sync):</p>
+            <pre><code>&lt;div class="card enhanced-kiro-card"&gt;
+    &lt;div class="card-icon"&gt;⚡&lt;/div&gt;
+    &lt;h2 class="card-title"&gt;Enhanced KIRO&lt;/h2&gt;
+    &lt;p class="card-description"&gt;Enterprise AI development framework…&lt;/p&gt;
+    &lt;a href="enhanced-kiro/index.html" class="card-link"&gt;View Documentation →&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3>Step 3 — Add website navigation (optional but recommended)</h3>
+            <p>Update <code>frontend/src/components/Navigation.jsx</code> to add a link, for example:</p>
+            <pre><code>&lt;li&gt;&lt;a href="/docs/enhanced-kiro/" target="_blank"&gt;Enhanced KIRO&lt;/a&gt;&lt;/li&gt;</code></pre>
+            <p>Optionally add an entry to <code>frontend/src/data/tools.json</code> for the Tools section on the home page.</p>
+
+            <h3>Step 4 — Remove the draft banner</h3>
+            <p>Before publishing, remove the yellow "Draft for review" banner from <code>FFJ-DocsPublic/index.html</code> (or its copy in <code>frontend/public/docs/enhanced-kiro/index.html</code>).</p>
+
+            <h3>Step 5 — Build, commit, and deploy</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC
+git add frontend/public/docs/ frontend/src/
+git commit -m "Publish Enhanced KIRO documentation to website"
+./deploy-with-new-domain.sh</code></pre>
+            <p>This builds the React frontend, syncs to S3 bucket <code>ffj-consulting-website</code>, and invalidates CloudFront distribution <code>E3545N3N8YO2FZ</code>.</p>
+
+            <h3>Step 6 — Verify after deploy</h3>
+            <ol>
+                <li>Open <code>https://ffjconsultingllc.com/docs/enhanced-kiro/</code></li>
+                <li>Hard refresh (Cmd+Shift+R) or use incognito if cached</li>
+                <li>Check all 8 pages and Mermaid diagrams render correctly</li>
+            </ol>
+
+            <div class="callout callout-success">
+                <h3>Before you publish — review checklist</h3>
+                <ul>
+                    <li>Read all 8 pages — tone, accuracy, numbers you're comfortable sharing publicly</li>
+                    <li>Confirm no client names, ticket IDs, or internal URLs slipped through</li>
+                    <li>Decide on final branding ("Enhanced KIRO" vs "FFJ Enhanced KIRO Framework")</li>
+                    <li>Remove the draft review banner from the portal page</li>
+                    <li>Sync <code>Docs/</code> and <code>frontend/public/docs/</code> (this unpublished-work card included)</li>
+                </ul>
+            </div>
+
+            <h2>Keeping docs in sync over time</h2>
+            <p>When AwsKiro internal docs are updated, the workflow is:</p>
+            <ol>
+                <li>Update source material in <code>~/REPO_AI/AwsKiro/Docs/</code></li>
+                <li>Re-curate and update pages in <code>FFJ-DocsPublic/</code></li>
+                <li>Re-copy to <code>frontend/public/docs/enhanced-kiro/</code> when ready to republish</li>
+                <li>Deploy</li>
+            </ol>
+            <p>A sync script could automate steps 2–3 later if the docs change frequently.</p>
+
+            <h2>Related documentation in this repo</h2>
+            <ul>
+                <li><a href="how-to-make-changes.html">How to Make Changes to this Website</a> — general deploy workflow</li>
+                <li><a href="aws-deployment.html">AWS Deployment</a> — S3, CloudFront, Route 53 details</li>
+                <li><code>FFJ-DocsPublic/README.md</code> — technical notes on what's included/excluded</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
