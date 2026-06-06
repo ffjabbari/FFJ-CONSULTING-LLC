@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup and Publishing Procedures - FFJ Consulting LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover { background: rgba(255, 255, 255, 0.3); }
+
+        .content h1 { color: #2d6a4f; margin-bottom: 30px; font-size: 2.5rem; }
+        .content h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .content h3 { color: #555; margin-top: 30px; margin-bottom: 15px; font-size: 1.3rem; }
+        .content p { line-height: 1.8; margin-bottom: 20px; color: #444; }
+        .content ul, .content ol { margin-left: 30px; margin-bottom: 20px; line-height: 1.8; color: #444; }
+        .content li { margin-bottom: 10px; }
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        .content pre {
+            background: #0a0e27;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .content pre code { background: transparent; color: inherit; padding: 0; }
+        .content table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .content th { background: #764ba2; color: white; padding: 12px; text-align: left; }
+        .content td { padding: 11px 12px; border-bottom: 1px solid #eee; color: #444; }
+        .callout {
+            background: #f8f9fa;
+            border-left: 4px solid #2d6a4f;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .callout-info {
+            background: #f0f2ff;
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Documentation</a>
+
+        <div class="content">
+            <h1>Setup and Publishing Procedures</h1>
+            <p>
+                A practical guide: run the FFJ Consulting website locally, preview documentation,
+                and publish Enhanced KIRO content from the private <code>FFJ-DocsPublic</code> repo to the live site.
+            </p>
+
+            <div class="callout">
+                <h3>Quick reference — local URLs</h3>
+                <table>
+                    <tr><th>What</th><th>Local URL</th></tr>
+                    <tr><td>FFJ website (React)</td><td><code>http://localhost:3000</code></td></tr>
+                    <tr><td>FFJ docs portal (via website)</td><td><code>http://localhost:3000/docs</code></td></tr>
+                    <tr><td>FFJ docs portal (standalone)</td><td><code>http://localhost:8080</code> (serve <code>Docs/</code> folder)</td></tr>
+                    <tr><td>Enhanced KIRO docs (private repo)</td><td><code>http://localhost:8081</code> (serve <code>FFJ-DocsPublic/</code>)</td></tr>
+                    <tr><td>Backend API (optional)</td><td><code>http://localhost:5000</code></td></tr>
+                </table>
+            </div>
+
+            <h2>1. Repositories involved</h2>
+            <table>
+                <tr><th>Repo</th><th>Local path</th><th>Role</th></tr>
+                <tr>
+                    <td><strong>FFJ-CONSULTING-LLC</strong></td>
+                    <td><code>~/REPO_CURSOR/FFJ-CONSULTING-LLC</code></td>
+                    <td>Website code. This <code>Docs/</code> folder is the source for system documentation cards.</td>
+                </tr>
+                <tr>
+                    <td><strong>FFJ-DocsPublic</strong> (private)</td>
+                    <td><code>~/REPO_CURSOR/FFJ-DocsPublic</code></td>
+                    <td>Enhanced KIRO documentation (8 pages). Not on the website until you publish it.</td>
+                </tr>
+                <tr>
+                    <td><strong>AwsKiro</strong> (private)</td>
+                    <td><code>~/REPO_AI/AwsKiro</code></td>
+                    <td>Full internal archive (76 cards). Source material only — never published directly.</td>
+                </tr>
+            </table>
+
+            <h2>2. Prerequisites</h2>
+            <ul>
+                <li><strong>Node.js</strong> v18+ and <strong>npm</strong> — required for the React frontend</li>
+                <li><strong>.NET 8 SDK</strong> — optional; only needed if you run the C# backend</li>
+                <li><strong>Python 3</strong> — optional; for <code>start.py</code> and serving static docs locally</li>
+                <li><strong>Git</strong> — version control and GitHub sync</li>
+            </ul>
+            <pre><code>node --version
+npm --version
+dotnet --version   # optional</code></pre>
+
+            <h2>3. Run the FFJ website locally</h2>
+            <p>The website is a React + Vite app in <code>frontend/</code>. Choose one method:</p>
+
+            <h3>Option A — Frontend only (most common)</h3>
+            <p>Use this when editing content, docs, resume, or UI. Backend is not required for most pages.</p>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC/frontend
+npm install          # first time only
+npm run dev</code></pre>
+            <p>Open <strong><code>http://localhost:3000</code></strong></p>
+
+            <h3>Option B — Python start script (frontend + backend)</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC
+python3 start.py</code></pre>
+            <p>Starts the C# API on port 5000 and the React app on port 3000.</p>
+
+            <h3>Option C — Shell script</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC
+./run-local.sh</code></pre>
+
+            <div class="callout callout-info">
+                <h3>What you can browse locally</h3>
+                <ul>
+                    <li><code>http://localhost:3000</code> — home page, landing animation, all React routes</li>
+                    <li><code>http://localhost:3000/resume</code> — resume page</li>
+                    <li><code>http://localhost:3000/docs</code> — deployed docs portal (<code>frontend/public/docs/</code>)</li>
+                    <li><code>http://localhost:3000/docs/index.html</code> — same docs portal directly</li>
+                </ul>
+            </div>
+
+            <h2>4. View documentation locally</h2>
+            <p>There are <strong>two</strong> docs locations in FFJ-CONSULTING-LLC. Know which one you are editing:</p>
+
+            <table>
+                <tr><th>Folder</th><th>Purpose</th><th>Visible at</th></tr>
+                <tr>
+                    <td><code>Docs/</code></td>
+                    <td>Source docs (this card portal, including Setup and Unpublished Work)</td>
+                    <td>Standalone server only — <em>not</em> auto-served by <code>npm run dev</code></td>
+                </tr>
+                <tr>
+                    <td><code>frontend/public/docs/</code></td>
+                    <td>What the live site actually deploys</td>
+                    <td><code>http://localhost:3000/docs</code> when running the frontend</td>
+                </tr>
+            </table>
+
+            <h3>Preview the Docs/ folder (this portal) standalone</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC/Docs
+python3 -m http.server 8080
+# Open http://localhost:8080</code></pre>
+            <p>This shows all cards including <strong>Setup and Publishing</strong> and <strong>Unpublished Work</strong> — even before you sync to <code>frontend/public/docs/</code>.</p>
+
+            <h3>Preview Enhanced KIRO docs (private repo)</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic
+python3 -m http.server 8081
+# Open http://localhost:8081</code></pre>
+            <p>These docs are <strong>not</strong> part of the FFJ website until you copy them in (see Section 5).</p>
+
+            <h2>5. Add Enhanced KIRO docs to the FFJ website</h2>
+            <p>When you are ready to publish Enhanced KIRO on <code>ffjconsultingllc.com</code>, follow these steps:</p>
+
+            <h3>Step 1 — Copy from private repo to the website</h3>
+            <pre><code>cp -r /Users/fjabbari/REPO_CURSOR/FFJ-DocsPublic/ \
+  /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC/frontend/public/docs/enhanced-kiro/</code></pre>
+
+            <h3>Step 2 — Remove the draft banner</h3>
+            <p>Edit <code>frontend/public/docs/enhanced-kiro/index.html</code> and remove the yellow "Draft for review" banner before going live.</p>
+
+            <h3>Step 3 — Add a card to the docs portal</h3>
+            <p>Add to both <code>Docs/index.html</code> and <code>frontend/public/docs/index.html</code>:</p>
+            <pre><code>&lt;div class="card enhanced-kiro-card"&gt;
+    &lt;div class="card-icon"&gt;⚡&lt;/div&gt;
+    &lt;h2 class="card-title"&gt;Enhanced KIRO&lt;/h2&gt;
+    &lt;p class="card-description"&gt;Enterprise AI development framework — governed, connected, measurable&lt;/p&gt;
+    &lt;a href="enhanced-kiro/index.html" class="card-link"&gt;View Documentation →&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+            <p>Add to <code>Docs/styles.css</code> and <code>frontend/public/docs/styles.css</code>:</p>
+            <pre><code>.enhanced-kiro-card { border-top: 4px solid #667eea; }</code></pre>
+
+            <h3>Step 4 — Add navigation link (optional)</h3>
+            <p>In <code>frontend/src/components/Navigation.jsx</code>, add a link to the docs:</p>
+            <pre><code>&lt;li&gt;&lt;a href="/docs/enhanced-kiro/" target="_blank" rel="noopener noreferrer"&gt;Enhanced KIRO&lt;/a&gt;&lt;/li&gt;</code></pre>
+            <p>Optionally add Kiro to <code>frontend/src/data/tools.json</code> on the home page Tools section.</p>
+
+            <h3>Step 5 — Preview on local website before deploy</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC/frontend
+npm run dev</code></pre>
+            <p>Verify at <code>http://localhost:3000/docs/enhanced-kiro/</code></p>
+
+            <h3>Step 6 — Commit and deploy to AWS</h3>
+            <pre><code>cd /Users/fjabbari/REPO_CURSOR/FFJ-CONSULTING-LLC
+git add frontend/public/docs/ frontend/src/
+git commit -m "Publish Enhanced KIRO documentation to website"
+./deploy-with-new-domain.sh</code></pre>
+            <p>Deploy targets: S3 bucket <code>ffj-consulting-website</code>, CloudFront <code>E3545N3N8YO2FZ</code>.</p>
+
+            <h3>Step 7 — Verify production</h3>
+            <ul>
+                <li><code>https://ffjconsultingllc.com/docs/enhanced-kiro/</code></li>
+                <li>Hard refresh (Cmd+Shift+R) or incognito if CloudFront cache shows old content</li>
+            </ul>
+
+            <p>See also: <a href="unpublished-work.html">Unpublished Work</a> for provenance, sanitization, and review checklist.</p>
+
+            <h2>6. Sync this Docs/ portal to the live website</h2>
+            <p>Cards like <strong>Setup and Publishing</strong> live in <code>Docs/</code> first. To show them on the public site at <code>/docs</code>:</p>
+            <ol>
+                <li>Copy changed files from <code>Docs/</code> to <code>frontend/public/docs/</code></li>
+                <li>Or copy the whole folder when many cards changed: <code>cp -r Docs/* frontend/public/docs/</code></li>
+                <li>Preview at <code>http://localhost:3000/docs</code></li>
+                <li>Commit and run <code>./deploy-with-new-domain.sh</code></li>
+            </ol>
+
+            <div class="callout">
+                <h3>Rule of thumb</h3>
+                <p>
+                    <strong>Edit in <code>Docs/</code></strong> for documentation work.<br>
+                    <strong>Copy to <code>frontend/public/docs/</code></strong> before previewing on the website or deploying.<br>
+                    <strong>Edit in <code>FFJ-DocsPublic/</code></strong> for Enhanced KIRO content — copy to <code>frontend/public/docs/enhanced-kiro/</code> only when publishing.
+                </p>
+            </div>
+
+            <h2>7. Typical workflows</h2>
+
+            <h3>Workflow A — Edit website content only</h3>
+            <ol>
+                <li>Edit files in <code>frontend/src</code> or <code>frontend/public</code></li>
+                <li><code>npm run dev</code> → preview at localhost:3000</li>
+                <li>Commit, push, <code>./deploy-with-new-domain.sh</code></li>
+            </ol>
+
+            <h3>Workflow B — Edit Enhanced KIRO docs (stay private)</h3>
+            <ol>
+                <li>Edit HTML in <code>~/REPO_CURSOR/FFJ-DocsPublic</code></li>
+                <li>Preview: <code>python3 -m http.server 8081</code></li>
+                <li>Commit and push to private <code>FFJ-DocsPublic</code> repo on GitHub</li>
+                <li>Do <em>not</em> copy to FFJ website until ready</li>
+            </ol>
+
+            <h3>Workflow C — Publish Enhanced KIRO to website</h3>
+            <ol>
+                <li>Complete review checklist (see <a href="unpublished-work.html">Unpublished Work</a>)</li>
+                <li>Follow Section 5 above</li>
+                <li>Deploy</li>
+            </ol>
+
+            <h2>8. Related documentation</h2>
+            <ul>
+                <li><a href="how-to-make-changes.html">How to Make Changes to this Website</a> — resume, GitHub, AWS deploy, caching</li>
+                <li><a href="unpublished-work.html">Unpublished Work</a> — Enhanced KIRO provenance and review checklist</li>
+                <li><a href="aws-deployment.html">AWS Deployment</a> — S3, CloudFront, Route 53</li>
+                <li><a href="deployment.html">Deployment</a> — general build and release</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

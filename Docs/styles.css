@@ -122,6 +122,10 @@ header h1 {
     border-top: 4px solid #fee140;
 }
 
+.setup-publishing-card {
+    border-top: 4px solid #2d6a4f;
+}
+
 .how-to-change-card {
     border-top: 4px solid #ff9f1c;
 }
