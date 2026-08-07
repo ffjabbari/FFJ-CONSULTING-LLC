@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import Navigation from './Navigation'
 import Footer from './Footer'
-import { SITE_URL, GITHUB_REPO, getFullUrl } from '../config'
 import './Resume.css'
 
 function Resume() {
@@ -59,50 +58,6 @@ function Resume() {
         
         <div className="resume-content">
           <ReactMarkdown>{resumeContent}</ReactMarkdown>
-        </div>
-        
-        <div className="resume-links">
-          <h3>Additional Resources</h3>
-          <div className="resume-links-grid">
-            <a 
-              href={getFullUrl('/')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="resume-link"
-            >
-              <span className="resume-link-icon">🌐</span>
-              <div>
-                <strong>FFJ Consulting Cloud and AI Hands on Architecture</strong>
-                <p>Visit our website</p>
-              </div>
-            </a>
-            
-            <a 
-              href={getFullUrl('/article/ai-revolution-demo')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="resume-link"
-            >
-              <span className="resume-link-icon">📚</span>
-              <div>
-                <strong>AI History, Past and Present</strong>
-                <p>Read the AI Revolution article</p>
-              </div>
-            </a>
-            
-            <a 
-              href={GITHUB_REPO}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="resume-link"
-            >
-              <span className="resume-link-icon">💻</span>
-              <div>
-                <strong>GitHub Source Code</strong>
-                <p>View how this website was built</p>
-              </div>
-            </a>
-          </div>
         </div>
       </div>
       <Footer />
